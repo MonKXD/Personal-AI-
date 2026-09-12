@@ -2,10 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
-
-const prefersReducedMotion = () =>
-  typeof window !== "undefined" &&
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 /** Fade/rise a block into view on first scroll intersection. Respects reduced motion. */
 export function Reveal({
@@ -20,16 +17,27 @@ export function Reveal({
   as?: React.ElementType;
 }) {
   const ref = React.useRef<HTMLElement | null>(null);
-  // Reduced-motion users start fully shown; no effect-driven state for that path.
-  const [shown, setShown] = React.useState<boolean>(prefersReducedMotion);
+  const reduce = useReducedMotion();
+  // `intersected` starts false, matching what the server rendered, for
+  // every visitor. `shown` derives `reduce` in directly rather than syncing
+  // it into state via an effect — reduced-motion users are shown the
+  // instant that preference is known post-mount, with no extra render.
+  // (This used to read matchMedia synchronously in a lazy useState
+  // initializer, which — like `useReducedMotion` itself — returns the real
+  // client-side value on the very first client render, before hydration
+  // finishes comparing against the server HTML. That's a textbook
+  // hydration mismatch: see lib/use-reduced-motion.ts.)
+  const [intersected, setIntersected] = React.useState(false);
+  const shown = reduce || intersected;
 
   React.useEffect(() => {
+    if (reduce) return; // already shown — nothing to observe
     const el = ref.current;
-    if (!el || shown) return;
+    if (!el || intersected) return;
     const io = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setShown(true);
+          setIntersected(true);
           io.disconnect();
         }
       },
@@ -37,7 +45,7 @@ export function Reveal({
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [shown]);
+  }, [reduce, intersected]);
 
   return (
     <Tag

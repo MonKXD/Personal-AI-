@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { AnimatePresence, motion, useReducedMotion, useScroll, useMotionValueEvent } from "motion/react";
+import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "motion/react";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import {
   Camera,
   ScanText,
