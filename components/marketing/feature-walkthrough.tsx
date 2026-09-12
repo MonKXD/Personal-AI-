@@ -8,6 +8,8 @@ import {
   LayoutGrid,
   FolderTree,
   MessagesSquare,
+  Clock3,
+  Wallet,
   BellRing,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -76,6 +78,7 @@ const V = {
   grape: "#4a3f8f",
   teal: "#3f8f82",
   notice: "#a3432f",
+  amber: "#c78a2e",
 } as const;
 
 const STEPS: Step[] = [
@@ -196,11 +199,66 @@ const STEPS: Step[] = [
     ),
   },
   {
+    key: "deadlines",
+    icon: Clock3,
+    title: "One deadline list, from everywhere",
+    caption:
+      "Add one yourself, or let WhatsApp and calls feed it automatically once connected — sorted soonest-first, color-coded by how urgent it is.",
+    render: () => (
+      <Frame label="Deadlines">
+        <div className="space-y-2">
+          <Row color={V.notice} title="Submit assignment" meta="Due today · urgent" tag="Manual" />
+          <Row color={V.amber} title="Pay rent" meta="Due in 3 days" tag="WhatsApp" />
+          <Row color={V.teal} title="Dentist appointment" meta="Due next week" tag="Call" />
+        </div>
+      </Frame>
+    ),
+  },
+  {
+    key: "finance",
+    icon: Wallet,
+    title: "Know where your money goes",
+    caption:
+      "Log an expense in two taps, or upload a bank statement — Personal AI categorizes every row and tracks it by month.",
+    render: () => (
+      <Frame label="Finance">
+        <div className="space-y-3">
+          <div className="flex items-baseline justify-between">
+            <span className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+              This month
+            </span>
+            <span className="font-display text-lg font-bold text-foreground">₹12,450</span>
+          </div>
+          <div className="space-y-2">
+            {[
+              { label: "Food", amount: "3,200", pct: 68, color: V.notice },
+              { label: "Travel", amount: "2,100", pct: 45, color: V.amber },
+              { label: "Subscriptions", amount: "899", pct: 20, color: V.teal },
+            ].map((c) => (
+              <div key={c.label}>
+                <div className="mb-1 flex items-center justify-between font-body text-[11px]">
+                  <span className="font-medium text-foreground">{c.label}</span>
+                  <span className="text-muted-foreground">₹{c.amount}</span>
+                </div>
+                <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
+                  <div
+                    className="h-full rounded-full"
+                    style={{ width: `${c.pct}%`, background: c.color }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Frame>
+    ),
+  },
+  {
     key: "remind",
     icon: BellRing,
     title: "It nudges you in time",
     caption:
-      "Deadlines it read become reminders. A weekly recap of everything you captured lands every Sunday.",
+      "Due-soon deadlines become reminders. A weekly recap of everything you captured, spent, and have coming up lands every Sunday.",
     render: () => (
       <Frame label="Today">
         <div className="space-y-2">

@@ -145,10 +145,10 @@ export default function LandingPage() {
         <div className="container-px mx-auto max-w-6xl pt-16 lg:pt-20">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-              The whole app, in six moves
+              The whole app, in eight moves
             </p>
             <h2 className="mt-3 text-[1.75rem] font-semibold tracking-tight sm:text-3xl">
-              Capture → read → recall
+              Capture → recall → stay on top
             </h2>
             <p className="mt-3 max-w-xl text-muted-foreground">
               Scroll through the loop. On a phone it plays on its own — tap to pause.
