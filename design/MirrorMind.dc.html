@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+    body { background: #020208; font-family: 'Space Grotesk', sans-serif; }
+    a, a:hover { color: inherit; text-decoration: none; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(139,92,246,.3); border-radius: 4px; }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+    @keyframes orb-glow { 0%,100% { box-shadow: 0 0 50px rgba(139,92,246,.8),0 0 100px rgba(139,92,246,.4),0 0 180px rgba(139,92,246,.2); } 50% { box-shadow: 0 0 75px rgba(139,92,246,1),0 0 140px rgba(139,92,246,.55),0 0 240px rgba(99,102,241,.28); } }
+    @keyframes orb-glow-sm { 0%,100% { box-shadow: 0 0 14px rgba(139,92,246,.7); } 50% { box-shadow: 0 0 22px rgba(139,92,246,1); } }
+    @keyframes dot-pulse { 0%,100% { opacity:.28; transform:scale(.72); } 50% { opacity:1; transform:scale(1); } }
+    @keyframes scan-line { 0% { top:-2px; } 100% { top:calc(100% + 2px); } }
+    @keyframes particle-float { 0%,100% { transform:translateY(0) translateX(0);opacity:.45; } 33% { transform:translateY(-22px) translateX(11px);opacity:.85; } 66% { transform:translateY(-9px) translateX(-9px);opacity:.55; } }
+    @keyframes fade-in-up { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes ring-pulse { 0% { transform:scale(1);opacity:.6; } 100% { transform:scale(2.9);opacity:0; } }
+    @keyframes slide-in { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fade-in { from { opacity:0; } to { opacity:1; } }
+  </style>
+</helmet>
+
+<!-- ═══════════════════════════════════════ DESKTOP ═══════════════════════════════════════ -->
+<sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ false }}">
+<div style="width:100vw;height:100vh;display:flex;background:#04040f;overflow:hidden;animation:fade-in .3s ease-out;">
+
+  <!-- Sidebar -->
+  <div style="width:260px;height:100%;flex-shrink:0;border-right:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;background:rgba(255,255,255,.015);">
+    <!-- Logo -->
+    <div style="padding:28px 24px 24px;border-bottom:1px solid rgba(255,255,255,.06);">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:38px;height:38px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 33% 28%,#ede9fe,#a78bfa 22%,#7c3aed 46%,#4c1d95 68%,#1e1b4b 85%,#04040f);animation:orb-glow-sm 3.5s ease-in-out infinite;position:relative;">
+          <div style="position:absolute;top:18%;left:20%;width:11px;height:7px;background:radial-gradient(ellipse,rgba(255,255,255,.6) 0%,transparent 70%);border-radius:50%;transform:rotate(-25deg);"></div>
+        </div>
+        <div>
+          <div style="font-size:17px;font-weight:700;color:white;letter-spacing:-.6px;line-height:1.1;">MirrorMind</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.35);margin-top:1px;letter-spacing:.3px;">Your AI Memory</div>
+        </div>
+      </div>
+    </div>
+    <!-- Nav -->
+    <div style="flex:1;padding:16px 12px;display:flex;flex-direction:column;gap:4px;">
+      <div onClick="{{ goHome }}" style="{{ deskNavHome }}" style-hover="background:rgba(139,92,246,.08);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H15V15H9V21H4C3.45 21 3 20.55 3 20V9.5Z" stroke="currentColor" stroke-width="1.8" fill="{{ deskHomeNavFill }}"/></svg>
+        Home
+      </div>
+      <div onClick="{{ goCapture }}" style="{{ deskNavCapture }}" style-hover="background:rgba(139,92,246,.08);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="3" stroke="currentColor" stroke-width="1.8" fill="{{ deskCaptureNavFill }}"/><circle cx="12" cy="14" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M8 7L9.5 4H14.5L16 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Capture
+      </div>
+      <div onClick="{{ goAsk }}" style="{{ deskNavAsk }}" style-hover="background:rgba(139,92,246,.08);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 2H4C2.9 2 2 2.9 2 4V16C2 17.1 2.9 18 4 18H8L12 22L16 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" stroke="currentColor" stroke-width="1.8" fill="{{ deskAskNavFill }}"/><circle cx="8" cy="10" r="1.2" fill="currentColor"/><circle cx="12" cy="10" r="1.2" fill="currentColor"/><circle cx="16" cy="10" r="1.2" fill="currentColor"/></svg>
+        Ask Memory
+      </div>
+    </div>
+    <!-- Bottom badge -->
+    <div style="padding:20px 16px;border-top:1px solid rgba(255,255,255,.06);">
+      <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2);border-radius:14px;">
+        <div style="width:8px;height:8px;border-radius:50%;background:#a78bfa;flex-shrink:0;box-shadow:0 0 8px rgba(167,139,250,.8);"></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:#a78bfa;">4 memories today</div>
+          <div style="font-family:'DM Sans';font-size:11px;color:rgba(255,255,255,.35);margin-top:1px;">All synced</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div style="flex:1;height:100%;overflow:hidden;display:flex;flex-direction:column;position:relative;">
+
+    <!-- Desktop HOME -->
+    <sc-if value="{{ deskShowHome }}" hint-placeholder-val="{{ true }}">
+    <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;animation:fade-in .25s ease-out;">
+      <!-- Header -->
+      <div style="flex-shrink:0;padding:28px 40px 0;display:flex;align-items:flex-end;justify-content:space-between;">
+        <div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(255,255,255,.3);">Thursday, Sep 4</div>
+          <div style="font-size:32px;font-weight:700;color:white;letter-spacing:-.9px;margin-top:2px;line-height:1.1;">Your Memory</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:14px;color:#a78bfa;font-weight:500;margin-top:4px;">4 things remembered today</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding-bottom:4px;">
+          <div style="padding:10px 18px;background:linear-gradient(135deg,#8b5cf6,#6d28d9);border-radius:12px;color:white;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 4px 16px rgba(139,92,246,.4);transition:box-shadow .2s;" style-hover="box-shadow:0 6px 24px rgba(139,92,246,.65);" onClick="{{ goCapture }}">+ Capture</div>
+        </div>
+      </div>
+      <!-- Search -->
+      <div style="flex-shrink:0;margin:20px 40px 0;padding:13px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;display:flex;align-items:center;gap:12px;max-width:600px;cursor:text;transition:border-color .15s;" style-hover="border-color:rgba(255,255,255,.16);">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5.5" stroke="rgba(255,255,255,0.26)" stroke-width="1.5"/><path d="M11 11L14 14" stroke="rgba(255,255,255,0.26)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,.22);">Search your memory...</span>
+        <div style="margin-left:auto;font-family:'DM Sans';font-size:11px;color:rgba(255,255,255,.15);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:2px 8px;">⌘ K</div>
+      </div>
+      <!-- Section title -->
+      <div style="flex-shrink:0;padding:20px 40px 12px;font-size:16px;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:-.2px;">Recent</div>
+      <!-- Cards grid -->
+      <div style="flex:1;overflow-y:auto;padding:0 40px 32px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;align-content:start;">
+        <sc-for list="{{ memories }}" as="memory" hint-placeholder-count="4">
+          <div onClick="{{ memory.onTap }}" style="display:flex;align-items:flex-start;gap:14px;padding:18px 16px 15px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:20px;cursor:pointer;position:relative;overflow:hidden;transition:background .18s,border-color .18s,transform .18s;" style-hover="background:rgba(255,255,255,.075);border-color:rgba(255,255,255,.14);transform:translateY(-2px);">
+            <div style="{{ memory.accentSty }}"></div>
+            <div style="{{ memory.iconSty }}">{{ memory.icon }}</div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:15px;font-weight:600;color:white;letter-spacing:-.3px;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ memory.title }}</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(255,255,255,.42);line-height:1.5;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">{{ memory.preview }}</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;">
+                <div style="display:flex;gap:5px;flex-wrap:wrap;">
+                  <sc-for list="{{ memory.chips }}" as="chip" hint-placeholder-count="1">
+                    <div style="{{ chip.sty }}">{{ chip.label }}</div>
+                  </sc-for>
+                </div>
+                <span style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.26);flex-shrink:0;margin-left:8px;">{{ memory.time }}</span>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- Desktop CAPTURE -->
+    <sc-if value="{{ deskShowCapture }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;animation:fade-in .25s ease-out;">
+      <div style="flex-shrink:0;padding:28px 40px 0;">
+        <div style="font-size:32px;font-weight:700;color:white;letter-spacing:-.9px;line-height:1.1;">Capture</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,.38);margin-top:5px;">Point your camera or upload an image to extract text</div>
+      </div>
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:32px 40px;">
+        <div style="width:100%;max-width:580px;display:flex;flex-direction:column;align-items:center;gap:28px;">
+          <!-- Viewfinder -->
+          <div style="width:100%;position:relative;border-radius:24px;overflow:hidden;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.1);height:360px;">
+            <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:28px 28px;"></div>
+            <div style="position:absolute;top:16px;left:16px;width:30px;height:30px;border-top:2.5px solid #8b5cf6;border-left:2.5px solid #8b5cf6;border-radius:6px 0 0 0;"></div>
+            <div style="position:absolute;top:16px;right:16px;width:30px;height:30px;border-top:2.5px solid #8b5cf6;border-right:2.5px solid #8b5cf6;border-radius:0 6px 0 0;"></div>
+            <div style="position:absolute;bottom:16px;left:16px;width:30px;height:30px;border-bottom:2.5px solid #8b5cf6;border-left:2.5px solid #8b5cf6;border-radius:0 0 0 6px;"></div>
+            <div style="position:absolute;bottom:16px;right:16px;width:30px;height:30px;border-bottom:2.5px solid #8b5cf6;border-right:2.5px solid #8b5cf6;border-radius:0 0 6px 0;"></div>
+            <div style="{{ notScanSty }}">
+              <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;">
+                <svg width="56" height="56" viewBox="0 0 52 52" fill="none" opacity="0.16"><rect x="6" y="13" width="40" height="28" rx="6" stroke="white" stroke-width="2"/><circle cx="26" cy="27" r="9" stroke="white" stroke-width="2"/><path d="M17 13L20 7H32L35 13" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+                <div style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,.22);text-align:center;line-height:1.55;">Point at a notice, textbook, whiteboard, or timetable</div>
+              </div>
+            </div>
+            <div style="{{ scanSty }}">
+              <div style="position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 0%,#8b5cf6 18%,#c4b5fd 50%,#67e8f9 82%,transparent 100%);box-shadow:0 0 14px rgba(139,92,246,.9),0 0 28px rgba(139,92,246,.45);animation:scan-line 1.8s ease-in-out alternate infinite;"></div>
+              <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.05);"><div style="{{ progressBarSty }}"></div></div>
+              <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;">
+                <div style="background:rgba(4,4,15,.82);backdrop-filter:blur(14px);border:1px solid rgba(139,92,246,.42);border-radius:13px;padding:12px 24px;font-size:15px;font-weight:600;color:white;">✦ Extracting text...</div>
+              </div>
+            </div>
+          </div>
+          <!-- Buttons row -->
+          <div style="display:flex;align-items:center;gap:20px;">
+            <div style="display:flex;align-items:center;gap:10px;padding:13px 22px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;cursor:pointer;color:rgba(255,255,255,.7);font-size:14px;font-weight:500;transition:background .15s;" style-hover="background:rgba(255,255,255,.1);">
+              <svg width="18" height="18" viewBox="0 0 22 22" fill="none"><rect x="2" y="2" width="18" height="18" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M2 14L6 9.5L9.5 13L13 9L20 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+              Upload Image
+            </div>
+            <div onClick="{{ startScan }}" style="display:flex;align-items:center;gap:10px;padding:13px 28px;background:linear-gradient(135deg,#8b5cf6,#6d28d9);border-radius:14px;cursor:pointer;color:white;font-size:14px;font-weight:600;box-shadow:0 6px 24px rgba(139,92,246,.5);transition:box-shadow .2s,transform .2s;position:relative;" style-hover="box-shadow:0 10px 36px rgba(139,92,246,.7);transform:translateY(-1px);">
+              <svg width="18" height="18" viewBox="0 0 32 32" fill="none"><rect x="4" y="10" width="24" height="18" rx="4" stroke="white" stroke-width="2"/><circle cx="16" cy="19" r="5" stroke="white" stroke-width="2"/><path d="M10 10L12.5 5H19.5L22 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Capture Now
+            </div>
+          </div>
+          <div style="font-family:'DM Sans';font-size:13px;color:rgba(255,255,255,.3);text-align:center;">AI extracts and stores text from your image automatically</div>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- Desktop DETAIL -->
+    <sc-if value="{{ deskShowDetail }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;animation:fade-in .25s ease-out;">
+      <div style="flex-shrink:0;padding:28px 40px 24px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:16px;">
+        <div onClick="{{ backToHome }}" style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.45);font-family:'DM Sans';font-size:14px;cursor:pointer;transition:color .15s;padding:8px 0;" style-hover="color:rgba(255,255,255,.75);">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M12 15L7 10L12 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back to Home
+        </div>
+        <div style="width:1px;height:16px;background:rgba(255,255,255,.1);"></div>
+        <div style="font-size:15px;font-weight:600;color:rgba(255,255,255,.6);">Memory Detail</div>
+      </div>
+      <div style="flex:1;overflow-y:auto;padding:36px 40px;">
+        <div style="max-width:800px;display:flex;flex-direction:column;gap:24px;">
+          <!-- Header row -->
+          <div style="display:flex;align-items:center;gap:18px;">
+            <div style="{{ detailIconSty }}">{{ detailIcon }}</div>
+            <div>
+              <div style="font-size:26px;font-weight:700;color:white;letter-spacing:-.7px;line-height:1.2;">{{ detailTitle }}</div>
+              <div style="font-family:'DM Sans';font-size:13px;color:rgba(255,255,255,.38);margin-top:6px;">{{ detailTime }} · {{ detailType }}</div>
+            </div>
+          </div>
+          <!-- Extracted text -->
+          <div style="padding:24px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;">
+            <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.28);letter-spacing:1.3px;text-transform:uppercase;margin-bottom:14px;">Extracted Text</div>
+            <div style="font-family:'DM Sans';font-size:16px;color:rgba(255,255,255,.82);line-height:1.8;">{{ detailPreview }}</div>
+          </div>
+          <!-- Tags -->
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <sc-for list="{{ detailChips }}" as="chip" hint-placeholder-count="2">
+              <div style="{{ chip.sty }}">{{ chip.label }}</div>
+            </sc-for>
+          </div>
+          <!-- CTA -->
+          <div onClick="{{ goAsk }}" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:linear-gradient(135deg,#8b5cf6 0%,#6d28d9 100%);border-radius:16px;color:white;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 8px 32px rgba(139,92,246,.4);transition:box-shadow .2s,transform .2s;align-self:flex-start;" style-hover="box-shadow:0 14px 44px rgba(139,92,246,.65);transform:translateY(-2px);">✦ Ask about this memory</div>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- Desktop ASK -->
+    <sc-if value="{{ deskShowAsk }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;animation:fade-in .25s ease-out;">
+      <!-- Header -->
+      <div style="flex-shrink:0;padding:28px 40px 20px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="font-size:24px;font-weight:700;color:white;letter-spacing:-.7px;">Ask Your Memory</div>
+          <div style="font-family:'DM Sans';font-size:13px;color:#a78bfa;margin-top:4px;">4 memories indexed and ready</div>
+        </div>
+        <div style="width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#c4b5fd,#8b5cf6 38%,#4c1d95 80%);animation:orb-glow-sm 3.2s ease-in-out infinite;"></div>
+      </div>
+      <!-- Chat messages -->
+      <div ref="{{ chatListRef }}" style="flex:1;overflow-y:auto;padding:24px 40px;display:flex;flex-direction:column;gap:12px;">
+        <sc-for list="{{ chatMsgs }}" as="msg" hint-placeholder-count="1">
+          <div style="{{ msg.wrapSty }}">
+            <div style="{{ msg.deskBubbleSty }}">{{ msg.text }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <!-- Input -->
+      <div style="flex-shrink:0;padding:16px 40px 24px;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:12px;">
+        <div style="flex:1;display:flex;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 20px;transition:border-color .15s;" style-hover="border-color:rgba(139,92,246,.4);">
+          <input value="{{ chatInput }}" onInput="{{ onChatInput }}" onKeyDown="{{ onChatKey }}" placeholder="Ask about what you've seen..." style="flex:1;background:none;border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:15px;color:white;caret-color:#8b5cf6;min-width:0;" />
+        </div>
+        <div onClick="{{ sendChat }}" style="width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,#8b5cf6,#6d28d9);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 18px rgba(139,92,246,.5);flex-shrink:0;transition:box-shadow .2s,transform .2s;" style-hover="box-shadow:0 6px 28px rgba(139,92,246,.8);transform:scale(1.06);">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17.5 10L4 3.5L7.5 10L4 16.5L17.5 10Z" fill="white"/></svg>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+  </div>
+</div>
+</sc-if>
+
+<!-- ═══════════════════════════════════════ MOBILE ═══════════════════════════════════════ -->
+<sc-if value="{{ isMobile }}" hint-placeholder-val="{{ true }}">
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 38%,#0c0621 0%,#020208 65%);">
+  <div ref="{{ scaleWrapRef }}" style="transform-origin:center center;flex-shrink:0;">
+  <div style="width:390px;height:844px;border-radius:44px;overflow:hidden;position:relative;background:#04040f;box-shadow:0 0 0 1px rgba(255,255,255,.06),0 0 0 6px rgba(255,255,255,.015),0 50px 110px rgba(0,0,0,.9),0 0 90px rgba(139,92,246,.12);">
+
+    <!-- SPLASH -->
+    <div style="{{ splashSty }}">
+      <div style="position:absolute;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.32),transparent 70%);top:50px;left:-100px;filter:blur(72px);pointer-events:none;"></div>
+      <div style="position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(6,182,212,.18),transparent 70%);bottom:120px;right:-70px;filter:blur(72px);pointer-events:none;"></div>
+      <div style="position:absolute;width:4px;height:4px;border-radius:50%;background:#c4b5fd;top:16%;left:15%;animation:particle-float 5s ease-in-out infinite;"></div>
+      <div style="position:absolute;width:3px;height:3px;border-radius:50%;background:#67e8f9;top:26%;right:18%;animation:particle-float 6.5s ease-in-out 1.2s infinite;"></div>
+      <div style="position:absolute;width:5px;height:5px;border-radius:50%;background:#a78bfa;bottom:32%;left:20%;animation:particle-float 4.8s ease-in-out .7s infinite;"></div>
+      <div style="position:absolute;width:3px;height:3px;border-radius:50%;background:#34d399;bottom:42%;right:14%;animation:particle-float 7s ease-in-out 2.5s infinite;"></div>
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;">
+        <div style="width:190px;height:190px;border-radius:50%;background:radial-gradient(circle at 33% 27%,#ede9fe,#a78bfa 20%,#7c3aed 45%,#4c1d95 67%,#1e1b4b 84%,#04040f);animation:float 3.6s ease-in-out infinite,orb-glow 3.6s ease-in-out infinite;position:relative;flex-shrink:0;">
+          <div style="position:absolute;top:17%;left:19%;width:55px;height:32px;background:radial-gradient(ellipse,rgba(255,255,255,.6) 0%,transparent 70%);border-radius:50%;transform:rotate(-25deg);pointer-events:none;"></div>
+          <div style="position:absolute;bottom:21%;right:17%;width:24px;height:15px;background:radial-gradient(ellipse,rgba(103,232,249,.48) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+          <div style="position:absolute;inset:-1px;border-radius:50%;border:1px solid rgba(167,139,250,.22);pointer-events:none;"></div>
+        </div>
+        <div style="text-align:center;animation:fade-in-up .85s ease-out .55s both;">
+          <div style="font-size:40px;font-weight:700;letter-spacing:-1.8px;background:linear-gradient(135deg,#ede9fe 0%,#a78bfa 42%,#67e8f9 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.04;">MirrorMind</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.38);margin-top:11px;letter-spacing:3px;text-transform:uppercase;">Your AI Memory</div>
+        </div>
+        <div style="display:flex;gap:9px;align-items:center;animation:fade-in-up .6s ease-out 1.1s both;">
+          <div style="width:7px;height:7px;border-radius:50%;background:#8b5cf6;animation:dot-pulse 1.4s ease-in-out infinite;"></div>
+          <div style="width:7px;height:7px;border-radius:50%;background:#8b5cf6;animation:dot-pulse 1.4s ease-in-out .28s infinite;"></div>
+          <div style="width:7px;height:7px;border-radius:50%;background:#8b5cf6;animation:dot-pulse 1.4s ease-in-out .56s infinite;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ONBOARD -->
+    <div style="{{ onboardSty }}">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% -18%,rgba(139,92,246,.2) 0%,transparent 58%);pointer-events:none;"></div>
+      <div style="position:absolute;top:54px;right:24px;z-index:10;">
+        <div onClick="{{ skipOnboard }}" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.42);padding:8px 18px;border-radius:24px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;font-weight:500;transition:background .15s;" style-hover="background:rgba(255,255,255,.11);">Skip</div>
+      </div>
+      <div key="{{ onboardSlide }}" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 38px;text-align:center;animation:fade-in-up .38s ease-out both;">
+        <div style="font-size:82px;line-height:1;margin-bottom:34px;">{{ currentSlide.icon }}</div>
+        <div style="font-size:34px;font-weight:700;color:white;letter-spacing:-1.1px;line-height:1.17;margin-bottom:22px;white-space:pre-line;text-wrap:pretty;">{{ currentSlide.title }}</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:16px;color:rgba(255,255,255,.48);line-height:1.68;max-width:295px;">{{ currentSlide.body }}</div>
+      </div>
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:0 28px 46px;display:flex;flex-direction:column;align-items:center;gap:26px;">
+        <div style="display:flex;gap:8px;align-items:center;">
+          <sc-for list="{{ onboardDots }}" as="dot" hint-placeholder-count="3">
+            <div style="{{ dot.sty }}"></div>
+          </sc-for>
+        </div>
+        <div onClick="{{ nextSlide }}" style="width:100%;padding:19px;background:linear-gradient(135deg,#8b5cf6 0%,#6d28d9 100%);border-radius:18px;color:white;font-size:17px;font-weight:600;text-align:center;cursor:pointer;box-shadow:0 8px 32px rgba(139,92,246,.45);letter-spacing:-.3px;transition:box-shadow .2s,transform .2s;" style-hover="box-shadow:0 14px 42px rgba(139,92,246,.65);transform:translateY(-2px);">{{ nextSlideLabel }}</div>
+      </div>
+    </div>
+
+    <!-- HOME -->
+    <div style="{{ homeSty }}">
+      <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:14px 28px 0;height:44px;">
+        <span style="font-size:15px;font-weight:600;color:white;">9:41</span>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="none"><rect x="0" y="7" width="3" height="5" rx="1" fill="white" opacity="0.38"/><rect x="4.5" y="4.5" width="3" height="7.5" rx="1" fill="white" opacity="0.6"/><rect x="9" y="2" width="3" height="10" rx="1" fill="white" opacity="0.82"/><rect x="13.5" y="0" width="3" height="12" rx="1" fill="white"/></svg>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><circle cx="8" cy="10.5" r="1.5" fill="white"/><path d="M4.5 7.5C5.9 6.1 6.9 5.5 8 5.5S10.1 6.1 11.5 7.5" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/><path d="M2 4.2C4.1 2.3 5.9 1.5 8 1.5S11.9 2.3 14 4.2" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.38"/></svg>
+          <div style="display:flex;align-items:center;gap:1.5px;"><div style="width:24px;height:12px;border:1.5px solid rgba(255,255,255,.55);border-radius:3px;padding:2px;display:flex;"><div style="flex:1;background:white;border-radius:1px;"></div></div><div style="width:2px;height:5px;background:rgba(255,255,255,.38);border-radius:0 1px 1px 0;"></div></div>
+        </div>
+      </div>
+      <div style="flex-shrink:0;padding:18px 28px 0;">
+        <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(255,255,255,.3);">Thursday, Sep 4</div>
+        <div style="font-size:29px;font-weight:700;color:white;letter-spacing:-.9px;margin-top:3px;line-height:1.1;">Your Memory</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:14px;color:#a78bfa;font-weight:500;margin-top:3px;">4 things remembered today</div>
+      </div>
+      <div style="flex-shrink:0;margin:16px 20px 0;padding:13px 16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;display:flex;align-items:center;gap:10px;cursor:text;transition:border-color .15s;" style-hover="border-color:rgba(255,255,255,.15);">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5.5" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/><path d="M11 11L14 14" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,.22);">Search your memory...</span>
+        <div style="margin-left:auto;font-family:'DM Sans';font-size:11px;color:rgba(255,255,255,.15);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:2px 8px;">⌘ K</div>
+      </div>
+      <div style="flex-shrink:0;padding:18px 28px 10px;display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-size:17px;font-weight:600;color:rgba(255,255,255,.85);letter-spacing:-.3px;">Recent</span>
+        <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#a78bfa;font-weight:500;cursor:pointer;">See all</span>
+      </div>
+      <div style="flex:1;padding:0 16px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-bottom:12px;">
+        <sc-for list="{{ memories }}" as="memory" hint-placeholder-count="4">
+          <div onClick="{{ memory.onTap }}" style="display:flex;align-items:flex-start;gap:13px;padding:15px 14px 13px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:20px;cursor:pointer;position:relative;overflow:hidden;transition:background .18s,border-color .18s,transform .18s;" style-hover="background:rgba(255,255,255,.075);border-color:rgba(255,255,255,.14);transform:scale(0.987);">
+            <div style="{{ memory.accentSty }}"></div>
+            <div style="{{ memory.iconSty }}">{{ memory.icon }}</div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:15px;font-weight:600;color:white;letter-spacing:-.3px;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ memory.title }}</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(255,255,255,.42);line-height:1.45;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">{{ memory.preview }}</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;">
+                <div style="display:flex;gap:5px;flex-wrap:wrap;">
+                  <sc-for list="{{ memory.chips }}" as="chip" hint-placeholder-count="1">
+                    <div style="{{ chip.sty }}">{{ chip.label }}</div>
+                  </sc-for>
+                </div>
+                <span style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.26);flex-shrink:0;margin-left:8px;">{{ memory.time }}</span>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- CAPTURE -->
+    <div style="{{ captureSty }}">
+      <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:56px 28px 22px;">
+        <div onClick="{{ goHome }}" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;" style-hover="background:rgba(255,255,255,.13);">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 15L7 10L12 5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div style="font-size:17px;font-weight:600;color:white;letter-spacing:-.3px;">Capture</div>
+        <div style="width:40px;"></div>
+      </div>
+      <div style="flex-shrink:0;margin:0 28px;position:relative;border-radius:24px;overflow:hidden;background:rgba(0,0,0,.62);border:1px solid rgba(255,255,255,.1);height:336px;">
+        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:28px 28px;"></div>
+        <div style="position:absolute;top:16px;left:16px;width:28px;height:28px;border-top:2.5px solid #8b5cf6;border-left:2.5px solid #8b5cf6;border-radius:6px 0 0 0;"></div>
+        <div style="position:absolute;top:16px;right:16px;width:28px;height:28px;border-top:2.5px solid #8b5cf6;border-right:2.5px solid #8b5cf6;border-radius:0 6px 0 0;"></div>
+        <div style="position:absolute;bottom:16px;left:16px;width:28px;height:28px;border-bottom:2.5px solid #8b5cf6;border-left:2.5px solid #8b5cf6;border-radius:0 0 0 6px;"></div>
+        <div style="position:absolute;bottom:16px;right:16px;width:28px;height:28px;border-bottom:2.5px solid #8b5cf6;border-right:2.5px solid #8b5cf6;border-radius:0 0 6px 0;"></div>
+        <div style="{{ notScanSty }}">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;">
+            <svg width="52" height="52" viewBox="0 0 52 52" fill="none" opacity="0.17"><rect x="6" y="13" width="40" height="28" rx="6" stroke="white" stroke-width="2"/><circle cx="26" cy="27" r="9" stroke="white" stroke-width="2"/><path d="M17 13L20 7H32L35 13" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+            <div style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,.24);text-align:center;line-height:1.55;">Point at a notice, textbook,<br>whiteboard, or timetable</div>
+          </div>
+        </div>
+        <div style="{{ scanSty }}">
+          <div style="position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 0%,#8b5cf6 18%,#c4b5fd 50%,#67e8f9 82%,transparent 100%);box-shadow:0 0 14px rgba(139,92,246,.9),0 0 28px rgba(139,92,246,.45);animation:scan-line 1.8s ease-in-out alternate infinite;"></div>
+          <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.05);"><div style="{{ progressBarSty }}"></div></div>
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;"><div style="background:rgba(4,4,15,.82);backdrop-filter:blur(14px);border:1px solid rgba(139,92,246,.42);border-radius:13px;padding:11px 22px;font-size:14px;font-weight:600;color:white;">✦ Extracting text...</div></div>
+        </div>
+      </div>
+      <div style="flex-shrink:0;text-align:center;margin:22px 28px 0;font-family:'DM Sans';font-size:14px;color:rgba(255,255,255,.36);line-height:1.55;">AI extracts and stores text automatically</div>
+      <div style="flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:36px;gap:30px;">
+        <div style="width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;" style-hover="background:rgba(255,255,255,.13);">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="2" width="18" height="18" rx="4" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"/><path d="M2 14L6 9.5L9.5 13L13 9L20 15" stroke="rgba(255,255,255,0.5)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14.5" cy="6.5" r="1.5" fill="rgba(255,255,255,0.5)"/></svg>
+        </div>
+        <div onClick="{{ startScan }}" style="width:82px;height:82px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#6d28d9);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 0 0 5px rgba(139,92,246,.18),0 10px 36px rgba(139,92,246,.55);position:relative;transition:box-shadow .2s;" style-hover="box-shadow:0 0 0 7px rgba(139,92,246,.28),0 14px 44px rgba(139,92,246,.7);">
+          <div style="position:absolute;top:-10px;left:-10px;right:-10px;bottom:-10px;border-radius:50%;border:1.5px solid rgba(139,92,246,.42);animation:ring-pulse 2.2s ease-out infinite;"></div>
+          <div style="position:absolute;top:-10px;left:-10px;right:-10px;bottom:-10px;border-radius:50%;border:1.5px solid rgba(139,92,246,.3);animation:ring-pulse 2.2s ease-out .75s infinite;"></div>
+          <svg width="34" height="34" viewBox="0 0 32 32" fill="none"><rect x="4" y="10" width="24" height="18" rx="4" stroke="white" stroke-width="2"/><circle cx="16" cy="19" r="5" stroke="white" stroke-width="2"/><path d="M10 10L12.5 5H19.5L22 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div style="width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;" style-hover="background:rgba(255,255,255,.13);">
+          <svg width="20" height="24" viewBox="0 0 20 24" fill="none"><path d="M11 2L3 14H9.5L7.5 22L18 9H12L14 2Z" stroke="rgba(255,255,255,0.5)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div style="flex:1;"></div>
+    </div>
+
+    <!-- DETAIL -->
+    <div style="{{ detailSty }}">
+      <div style="flex-shrink:0;display:flex;align-items:center;gap:16px;padding:56px 28px 20px;">
+        <div onClick="{{ backToHome }}" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background .15s;" style-hover="background:rgba(255,255,255,.13);">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 15L7 10L12 5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div style="font-size:17px;font-weight:600;color:white;letter-spacing:-.3px;">Memory</div>
+      </div>
+      <div style="flex-shrink:0;padding:0 28px;display:flex;align-items:center;gap:16px;margin-bottom:22px;">
+        <div style="{{ detailIconSty }}">{{ detailIcon }}</div>
+        <div>
+          <div style="font-size:21px;font-weight:700;color:white;letter-spacing:-.5px;line-height:1.2;">{{ detailTitle }}</div>
+          <div style="font-family:'DM Sans';font-size:13px;color:rgba(255,255,255,.38);margin-top:5px;">{{ detailTime }} · {{ detailType }}</div>
+        </div>
+      </div>
+      <div style="flex-shrink:0;margin:0 20px;padding:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;">
+        <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.28);letter-spacing:1.3px;text-transform:uppercase;margin-bottom:13px;">Extracted Text</div>
+        <div style="font-family:'DM Sans';font-size:15px;color:rgba(255,255,255,.82);line-height:1.72;">{{ detailPreview }}</div>
+      </div>
+      <div style="flex-shrink:0;padding:16px 28px;display:flex;gap:8px;flex-wrap:wrap;">
+        <sc-for list="{{ detailChips }}" as="chip" hint-placeholder-count="2">
+          <div style="{{ chip.sty }}">{{ chip.label }}</div>
+        </sc-for>
+      </div>
+      <div style="flex-shrink:0;margin:8px 20px;">
+        <div onClick="{{ goAsk }}" style="padding:18px;background:linear-gradient(135deg,#8b5cf6 0%,#6d28d9 100%);border-radius:18px;color:white;font-size:16px;font-weight:600;text-align:center;cursor:pointer;box-shadow:0 8px 32px rgba(139,92,246,.42);transition:box-shadow .2s,transform .2s;" style-hover="box-shadow:0 14px 44px rgba(139,92,246,.65);transform:translateY(-2px);">✦ Ask about this memory</div>
+      </div>
+      <div style="flex:1;"></div>
+    </div>
+
+    <!-- ASK -->
+    <div style="{{ askSty }}">
+      <div style="flex-shrink:0;display:flex;align-items:center;gap:12px;padding:56px 28px 16px;">
+        <div onClick="{{ goHome }}" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background .15s;" style-hover="background:rgba(255,255,255,.13);">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 15L7 10L12 5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div style="font-size:17px;font-weight:600;color:white;letter-spacing:-.3px;">Ask Your Memory</div>
+          <div style="font-family:'DM Sans';font-size:12px;color:#a78bfa;margin-top:1px;font-weight:500;">4 memories indexed</div>
+        </div>
+        <div style="margin-left:auto;width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#c4b5fd,#8b5cf6 38%,#4c1d95 80%);animation:orb-glow-sm 3.2s ease-in-out infinite;flex-shrink:0;"></div>
+      </div>
+      <div ref="{{ chatListRef }}" style="flex:1;overflow-y:auto;padding:0 16px;display:flex;flex-direction:column;gap:10px;padding-bottom:96px;">
+        <sc-for list="{{ chatMsgs }}" as="msg" hint-placeholder-count="1">
+          <div style="{{ msg.wrapSty }}">
+            <div style="{{ msg.bubbleSty }}">{{ msg.text }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="position:absolute;bottom:80px;left:0;right:0;padding:10px 16px 14px;background:linear-gradient(to top,#04040f 62%,rgba(4,4,15,0));display:flex;align-items:center;gap:10px;">
+        <div style="flex:1;display:flex;align-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:12px 18px;">
+          <input value="{{ chatInput }}" onInput="{{ onChatInput }}" onKeyDown="{{ onChatKey }}" placeholder="Ask about what you've seen..." style="flex:1;background:none;border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:15px;color:white;caret-color:#8b5cf6;min-width:0;" />
+        </div>
+        <div onClick="{{ sendChat }}" style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#6d28d9);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 18px rgba(139,92,246,.55);flex-shrink:0;transition:box-shadow .2s,transform .2s;" style-hover="box-shadow:0 6px 28px rgba(139,92,246,.8);transform:scale(1.06);">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17.5 10L4 3.5L7.5 10L4 16.5L17.5 10Z" fill="white"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB BAR -->
+    <div style="{{ tabBarSty }}">
+      <div onClick="{{ goHome }}" style="display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;flex:1;padding:8px 0 0;transition:opacity .15s;" style-hover="opacity:0.75;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H15V15H9V21H4C3.45 21 3 20.55 3 20V9.5Z" stroke="{{ homeTabColor }}" stroke-width="1.8" fill="{{ homeTabFill }}"/></svg>
+        <span style="{{ homeTabTextSty }}">Home</span>
+      </div>
+      <div onClick="{{ goCapture }}" style="display:flex;flex-direction:column;align-items:center;gap:0;cursor:pointer;flex:1;position:relative;margin-top:-26px;">
+        <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#6d28d9);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 22px rgba(139,92,246,.65),0 0 0 4px rgba(6,4,18,.96);transition:box-shadow .2s;" style-hover="box-shadow:0 6px 30px rgba(139,92,246,.85),0 0 0 4px rgba(6,4,18,.96);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="3" stroke="white" stroke-width="1.8"/><circle cx="12" cy="14" r="4" stroke="white" stroke-width="1.8"/><path d="M8 7L9.5 4H14.5L16 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span style="font-size:10px;font-weight:500;color:rgba(255,255,255,.45);font-family:'DM Sans';margin-top:5px;">Capture</span>
+      </div>
+      <div onClick="{{ goAsk }}" style="display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;flex:1;padding:8px 0 0;transition:opacity .15s;" style-hover="opacity:0.75;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 2H4C2.9 2 2 2.9 2 4V16C2 17.1 2.9 18 4 18H8L12 22L16 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" stroke="{{ askTabColor }}" stroke-width="1.8" fill="{{ askTabFill }}"/><circle cx="8" cy="10" r="1.2" fill="{{ askTabColor }}"/><circle cx="12" cy="10" r="1.2" fill="{{ askTabColor }}"/><circle cx="16" cy="10" r="1.2" fill="{{ askTabColor }}"/></svg>
+        <span style="{{ askTabTextSty }}">Ask</span>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  scaleWrapRef = React.createRef();
+  chatListRef = React.createRef();
+  colorMap = {
+    '#8b5cf6': { iconBg:'rgba(139,92,246,.14)', chipBg:'rgba(139,92,246,.12)', chipColor:'#c4b5fd', chipBorder:'rgba(139,92,246,.28)' },
+    '#06b6d4': { iconBg:'rgba(6,182,212,.14)', chipBg:'rgba(6,182,212,.12)', chipColor:'#67e8f9', chipBorder:'rgba(6,182,212,.28)' },
+    '#10b981': { iconBg:'rgba(16,185,129,.14)', chipBg:'rgba(16,185,129,.12)', chipColor:'#34d399', chipBorder:'rgba(16,185,129,.28)' },
+    '#f59e0b': { iconBg:'rgba(245,158,11,.14)', chipBg:'rgba(245,158,11,.12)', chipColor:'#fcd34d', chipBorder:'rgba(245,158,11,.28)' },
+  };
+  typeIcon = { notice:'📋', textbook:'📖', whiteboard:'🗒', timetable:'🗓' };
+
+  state = {
+    screen: window.innerWidth >= 900 ? 'home' : 'splash',
+    isDesktop: window.innerWidth >= 900,
+    onboardSlide: 0,
+    rawMemories: [
+      { id:1, type:'notice', title:'Robotics Club Notice', time:'2h ago', preview:'Next meeting: Friday 4PM, Room 204. All members must attend and bring project proposals.', tags:['school','club'], color:'#8b5cf6' },
+      { id:2, type:'textbook', title:'Wave Optics — Physics', time:'5h ago', preview:"Huygens principle: every point on a wavefront acts as a source of secondary wavelets spreading at wave speed.", tags:['physics','study'], color:'#06b6d4' },
+      { id:3, type:'whiteboard', title:'Integration by Parts', time:'Yesterday', preview:'∫u dv = uv − ∫v du. Use when facing a product of two functions. Choose u = function that simplifies when differentiated.', tags:['math','lecture'], color:'#10b981' },
+      { id:4, type:'timetable', title:'Lab Schedule', time:'Yesterday', preview:'Tuesday: Chemistry Lab 9–11AM (Room B12). Thursday: Physics Lab 2–4PM (Room C08). Bring lab coat.', tags:['schedule'], color:'#f59e0b' },
+    ],
+    selectedMemory: null,
+    chatMessages: [{ role:'ai', text:"Hey! Ask me anything about what you've seen today 👁" }],
+    chatInput: '',
+    scanning: false,
+    scanProgress: 0,
+  };
+
+  componentDidMount() {
+    const setScale = () => {
+      const el = this.scaleWrapRef.current;
+      if (el) {
+        const s = Math.min(1, (window.innerHeight - 32) / 844, (window.innerWidth - 32) / 390);
+        el.style.transform = `scale(${s})`;
+      }
+    };
+    const updateLayout = () => {
+      const desktop = window.innerWidth >= 900;
+      this.setState(s => ({
+        isDesktop: desktop,
+        screen: desktop && ['splash','onboard'].includes(s.screen) ? 'home' : s.screen,
+      }));
+      setScale();
+    };
+    setScale();
+    setTimeout(setScale, 80);
+    window.addEventListener('resize', updateLayout);
+    if (!this.state.isDesktop) setTimeout(() => this.setState({ screen:'onboard' }), 2900);
+  }
+
+  componentDidUpdate(pp, ps) {
+    if (ps.chatMessages !== this.state.chatMessages) {
+      const el = this.chatListRef.current;
+      if (el) el.scrollTop = el.scrollHeight;
+    }
+  }
+
+  navigate(to) { this.setState({ screen:to }); }
+
+  screenSty(name) {
+    const order = ['splash','onboard','home','capture','detail','ask'];
+    const curr = order.indexOf(this.state.screen);
+    const idx = order.indexOf(name);
+    const active = this.state.screen === name;
+    return {
+      position:'absolute', top:0, left:0, right:0, bottom:0,
+      background:'#04040f',
+      transition:'transform .44s cubic-bezier(.25,.46,.45,.94),opacity .3s ease',
+      transform: active ? 'translateX(0)' : idx < curr ? 'translateX(-100%)' : 'translateX(100%)',
+      opacity: active ? 1 : 0,
+      pointerEvents: active ? 'auto' : 'none',
+      overflow:'hidden', display:'flex', flexDirection:'column',
+    };
+  }
+
+  deskNavSty(name) {
+    const { screen } = this.state;
+    const active = name === 'home' ? (screen==='home'||screen==='detail') : screen===name;
+    return {
+      display:'flex', alignItems:'center', gap:'13px',
+      padding:'11px 14px', borderRadius:'14px', cursor:'pointer',
+      background: active ? 'rgba(139,92,246,.12)' : 'transparent',
+      color: active ? '#a78bfa' : 'rgba(255,255,255,.48)',
+      fontWeight: active ? 600 : 400,
+      fontFamily:"'Space Grotesk',sans-serif",
+      fontSize:'15px', letterSpacing:'-.2px',
+      transition:'background .15s,color .15s',
+    };
+  }
+
+  chips(tags, color) {
+    const c = this.colorMap[color] || this.colorMap['#8b5cf6'];
+    return tags.map(t => ({
+      label: '#' + t,
+      sty: { padding:'3px 9px', borderRadius:'8px', fontSize:'11px', fontWeight:500, fontFamily:"'DM Sans',sans-serif", color:c.chipColor, background:c.chipBg, border:`1px solid ${c.chipBorder}` },
+    }));
+  }
+
+  startScan() {
+    if (this.state.scanning) return;
+    this.setState({ scanning:true, scanProgress:0 });
+    const iv = setInterval(() => {
+      this.setState(s => {
+        if (s.scanProgress >= 100) {
+          clearInterval(iv);
+          setTimeout(() => this.setState({ scanning:false, scanProgress:0, screen:'home' }), 420);
+          return { scanProgress:100 };
+        }
+        return { scanProgress: s.scanProgress + 1 };
+      });
+    }, 28);
+  }
+
+  sendChat() {
+    const msg = this.state.chatInput.trim();
+    if (!msg) return;
+    const lc = msg.toLowerCase();
+    const ans = lc.includes('robotics')||lc.includes('notice')||lc.includes('club')
+      ? 'From the notice you saw 2h ago: Robotics Club meets Friday at 4PM in Room 204. Project proposals required! 🤖'
+      : lc.includes('physics')||lc.includes('wave')||lc.includes('huygens')
+      ? 'From your Wave Optics notes (5h ago): Huygens principle — every point on a wavefront acts as a source of secondary wavelets. 🌊'
+      : lc.includes('math')||lc.includes('integr')
+      ? 'From your lecture notes yesterday: Integration by parts → ∫u dv = uv − ∫v du. Choose u as the function that simplifies when differentiated. 🧮'
+      : lc.includes('lab')||lc.includes('schedule')||lc.includes('chemistry')
+      ? 'Your lab schedule (seen yesterday): Chemistry Lab Tue 9–11AM Room B12, Physics Lab Thu 2–4PM Room C08. Bring your lab coat! 🔬'
+      : `I searched your 4 memories for "${msg}". Closest match: Robotics Club notice from 2h ago.`;
+    this.setState(s => ({
+      chatMessages:[...s.chatMessages,{role:'user',text:msg},{role:'ai',text:ans}],
+      chatInput:'',
+    }));
+  }
+
+  renderVals() {
+    const { screen, isDesktop, onboardSlide, rawMemories, selectedMemory, chatMessages, chatInput, scanning, scanProgress } = this.state;
+    const isMobile = !isDesktop;
+
+    const slides = [
+      { icon:'👁', title:'See it once,\nremember forever', body:'Point your camera at notices, textbooks, whiteboards — MirrorMind captures and stores everything instantly.' },
+      { icon:'🔍', title:'Search your\nvisual memory', body:'Ask in plain English. "What was on the robotics notice?" Get the exact answer in seconds.' },
+      { icon:'🧠', title:'Your memory,\namplified', body:'MirrorMind learns what matters to you and surfaces the right memory at the right time.' },
+    ];
+
+    const memories = rawMemories.map(m => {
+      const c = this.colorMap[m.color] || this.colorMap['#8b5cf6'];
+      return {
+        ...m,
+        icon: this.typeIcon[m.type] || '📄',
+        iconSty: { width:'44px', height:'44px', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'20px', flexShrink:0, marginLeft:'4px', background:c.iconBg },
+        accentSty: { position:'absolute', left:0, top:0, bottom:0, width:'3px', background:m.color, borderRadius:'18px 0 0 18px' },
+        chips: this.chips(m.tags, m.color),
+        onTap: () => { this.setState({ selectedMemory:m }); this.navigate('detail'); },
+      };
+    });
+
+    const chatMsgs = chatMessages.map(msg => {
+      const isUser = msg.role === 'user';
+      const base = { fontFamily:"'DM Sans',sans-serif", fontSize:'14px', lineHeight:'1.58', padding:'12px 16px', animation:'slide-in .25s ease-out both' };
+      return {
+        ...msg,
+        wrapSty: { display:'flex', justifyContent: isUser ? 'flex-end' : 'flex-start' },
+        bubbleSty: isUser ? { ...base, background:'linear-gradient(135deg,#8b5cf6,#6d28d9)', color:'white', borderRadius:'18px 18px 4px 18px', maxWidth:'76%', boxShadow:'0 4px 16px rgba(139,92,246,.32)' }
+          : { ...base, background:'rgba(255,255,255,.06)', border:'1px solid rgba(255,255,255,.09)', color:'rgba(255,255,255,.85)', borderRadius:'18px 18px 18px 4px', maxWidth:'83%' },
+        deskBubbleSty: isUser ? { ...base, background:'linear-gradient(135deg,#8b5cf6,#6d28d9)', color:'white', borderRadius:'18px 18px 4px 18px', maxWidth:'60%', boxShadow:'0 4px 16px rgba(139,92,246,.32)' }
+          : { ...base, background:'rgba(255,255,255,.06)', border:'1px solid rgba(255,255,255,.09)', color:'rgba(255,255,255,.85)', borderRadius:'18px 18px 18px 4px', maxWidth:'65%' },
+      };
+    });
+
+    const sel = selectedMemory;
+    const selC = sel ? (this.colorMap[sel.color]||this.colorMap['#8b5cf6']) : this.colorMap['#8b5cf6'];
+    const homeTabColor = screen==='home' ? '#a78bfa' : 'rgba(255,255,255,.32)';
+    const askTabColor  = screen==='ask'  ? '#a78bfa' : 'rgba(255,255,255,.32)';
+    const tabTextBase  = { fontSize:'10px', fontWeight:600, fontFamily:"'DM Sans'" };
+
+    return {
+      isDesktop, isMobile,
+      scaleWrapRef: this.scaleWrapRef,
+
+      // Desktop nav
+      deskNavHome: this.deskNavSty('home'),
+      deskNavCapture: this.deskNavSty('capture'),
+      deskNavAsk: this.deskNavSty('ask'),
+      deskHomeNavFill: (screen==='home'||screen==='detail') ? '#a78bfa' : 'none',
+      deskCaptureNavFill: screen==='capture' ? '#a78bfa' : 'none',
+      deskAskNavFill: screen==='ask' ? '#a78bfa' : 'none',
+      deskShowHome: screen==='home',
+      deskShowCapture: screen==='capture',
+      deskShowDetail: screen==='detail',
+      deskShowAsk: screen==='ask',
+
+      // Mobile screen styles
+      splashSty: this.screenSty('splash'),
+      onboardSty: this.screenSty('onboard'),
+      homeSty: this.screenSty('home'),
+      captureSty: this.screenSty('capture'),
+      detailSty: this.screenSty('detail'),
+      askSty: this.screenSty('ask'),
+
+      tabBarSty: {
+        position:'absolute', bottom:0, left:0, right:0, height:'80px',
+        background:'rgba(5,3,16,.96)', borderTop:'1px solid rgba(255,255,255,.06)',
+        backdropFilter:'blur(32px)', display:'flex', alignItems:'center',
+        justifyContent:'space-around', paddingBottom:'8px',
+        opacity:['splash','onboard'].includes(screen)?0:1,
+        pointerEvents:['splash','onboard'].includes(screen)?'none':'auto',
+        transition:'opacity .4s ease', zIndex:100,
+      },
+
+      // Onboard
+      currentSlide: slides[onboardSlide],
+      onboardSlide,
+      onboardDots: [0,1,2].map(i => ({
+        sty:{ height:'8px', borderRadius:'4px', flexShrink:0, transition:'all .35s ease', background:i===onboardSlide?'#8b5cf6':'rgba(255,255,255,.2)', width:i===onboardSlide?'24px':'8px' },
+      })),
+      nextSlideLabel: onboardSlide<2 ? 'Continue' : 'Get Started →',
+      nextSlide: () => { if(onboardSlide<2) this.setState(s=>({onboardSlide:s.onboardSlide+1})); else this.navigate('home'); },
+      skipOnboard: () => this.navigate('home'),
+
+      // Shared navigation
+      memories,
+      goHome: () => this.navigate('home'),
+      goCapture: () => this.navigate('capture'),
+      goAsk: () => this.navigate('ask'),
+
+      // Capture
+      scanning, startScan: () => this.startScan(),
+      notScanSty:{ position:'absolute',inset:'0',opacity:scanning?0:1,transition:'opacity .3s',pointerEvents:scanning?'none':'auto' },
+      scanSty:   { position:'absolute',inset:'0',opacity:scanning?1:0,transition:'opacity .3s',pointerEvents:scanning?'auto':'none',overflow:'hidden' },
+      progressBarSty:{ height:'100%',background:'linear-gradient(90deg,#8b5cf6,#06b6d4)',borderRadius:'2px',transition:'width .03s linear',width:scanProgress+'%' },
+
+      // Detail
+      detailTitle: sel?.title||'', detailTime: sel?.time||'',
+      detailType: sel ? sel.type.charAt(0).toUpperCase()+sel.type.slice(1) : '',
+      detailPreview: sel?.preview||'',
+      detailIcon: sel ? (this.typeIcon[sel.type]||'📄') : '',
+      detailIconSty:{ width:'60px',height:'60px',borderRadius:'18px',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'28px',background:selC.iconBg,flexShrink:0 },
+      detailChips: sel ? this.chips(sel.tags,sel.color) : [],
+      backToHome: () => this.navigate('home'),
+
+      // Ask
+      chatListRef: this.chatListRef,
+      chatMsgs,
+      chatInput,
+      onChatInput: (e) => this.setState({ chatInput:e.target.value }),
+      onChatKey: (e) => { if(e.key==='Enter') this.sendChat(); },
+      sendChat: () => this.sendChat(),
+
+      // Mobile tab bar
+      homeTabColor, homeTabFill: screen==='home'?'#a78bfa':'none',
+      homeTabTextSty:{ ...tabTextBase, color:homeTabColor },
+      askTabColor, askTabFill: screen==='ask'?'#a78bfa':'none',
+      askTabTextSty:{ ...tabTextBase, color:askTabColor },
+    };
+  }
+}
+</script>
+</body>
+</html>

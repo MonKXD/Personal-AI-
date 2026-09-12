@@ -1,0 +1,35 @@
+name: Retrieval eval
+
+# Not on every push — it hits real Gemini + the real DB and spends free-tier
+# quota. Run it weekly and on demand. Needs these repo secrets:
+#   DATABASE_URL, NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY,
+#   GOOGLE_API_KEY, EVAL_USER_ID (the seeded demo user's id)
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 6 * * 1" # Mondays 06:17 UTC
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Run retrieval eval
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          EVAL_USER_ID: ${{ secrets.EVAL_USER_ID }}
+        run: |
+          if [ -z "$GOOGLE_API_KEY" ] || [ -z "$DATABASE_URL" ]; then
+            echo "::warning::eval secrets not configured — skipping"
+            exit 0
+          fi
+          npm run eval -- --chat

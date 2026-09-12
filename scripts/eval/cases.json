@@ -1,0 +1,28 @@
+{
+  "note": "Retrieval eval cases. `expect` matches memory titles by case-insensitive substring, resolved to ids at run time so a re-seed doesn't break them. Corpus = the seeded demo account (npm run seed:demo). `noMemory: true` = the model should decline (only scored with --chat).",
+  "cases": [
+    { "q": "when and where is my physics lab", "expect": ["Time Table"] },
+    { "q": "what room is the physics lab in", "expect": ["Time Table"] },
+    { "q": "did the physics lab time change", "expect": ["Time Table"] },
+    { "q": "what is the subject code for the microcontrollers paper", "expect": ["Microcontrollers"] },
+    { "q": "when is the exam form due", "expect": ["Microcontrollers"] },
+    { "q": "how much is the late fine for the exam form", "expect": ["Microcontrollers"] },
+    { "q": "what is the time constant of an RC circuit", "expect": ["RC Circuits"] },
+    { "q": "explain charging a capacitor through a resistor", "expect": ["RC Circuits"] },
+    { "q": "how long until a capacitor is basically fully charged", "expect": ["RC Circuits"] },
+    { "q": "what are the library hours during exam weeks", "expect": ["Library"] },
+    { "q": "is the library open on sundays during exams", "expect": ["Library"] },
+    { "q": "how does dijkstra's algorithm work", "expect": ["Dijkstra"] },
+    { "q": "time complexity of dijkstra with a binary heap", "expect": ["Dijkstra"] },
+    { "q": "which algorithm for shortest paths with negative edge weights", "expect": ["Dijkstra"] },
+    { "q": "what are the 8051 interrupt vector addresses", "expect": ["8051"] },
+    { "q": "which register sets 8051 interrupt priority", "expect": ["8051"] },
+    { "q": "what is the fourier series analysis equation", "expect": ["Fourier"] },
+    { "q": "even signals have only which fourier terms", "expect": ["Fourier"] },
+    { "q": "when is my mini-project abstract due", "expect": ["mini-project"] },
+    { "q": "what format does the mini-project abstract need to be", "expect": ["mini-project"] },
+    { "q": "what deadlines do i have coming up", "expect": ["Microcontrollers", "mini-project"] },
+    { "q": "what did i have for lunch yesterday", "expect": [], "noMemory": true },
+    { "q": "what's the wifi password for the hostel", "expect": [], "noMemory": true }
+  ]
+}

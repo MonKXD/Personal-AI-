@@ -1,0 +1,14 @@
+{
+  "name": "mirrormind-zapier",
+  "version": "1.0.0",
+  "description": "MirrorMind integration for Zapier — talks to the public API (/api/v1).",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "zapier-platform-core": "16.4.1"
+  }
+}

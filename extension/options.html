@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Save to MirrorMind — Settings</title>
+    <style>
+      :root { color-scheme: dark; }
+      body {
+        max-width: 460px;
+        margin: 40px auto;
+        padding: 0 20px;
+        font: 14px/1.6 -apple-system, "Segoe UI", system-ui, sans-serif;
+        background: #14131b;
+        color: #ececf1;
+      }
+      h1 { font-size: 18px; margin: 0 0 4px; }
+      p.sub { color: #9a97a8; margin: 0 0 24px; }
+      label { display: block; font-size: 12px; color: #9a97a8; margin: 16px 0 5px; }
+      input {
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid #2c2b3a;
+        background: #1c1b26;
+        color: #ececf1;
+        border-radius: 8px;
+        padding: 9px 11px;
+        font: inherit;
+      }
+      .btns { display: flex; gap: 8px; margin-top: 20px; }
+      button {
+        border: 0;
+        border-radius: 9px;
+        padding: 9px 16px;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      #save { color: #14121d; background: linear-gradient(135deg, #7a6dff, #9a8dff); }
+      #test { color: #ececf1; background: #262533; }
+      #status { margin-top: 14px; font-size: 12px; min-height: 16px; }
+      #status.ok { color: #3bb2b4; }
+      #status.bad { color: #f06a6a; }
+      code { background: #1c1b26; padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+      a { color: #b1a6ff; }
+    </style>
+  </head>
+  <body>
+    <h1>Save to MirrorMind</h1>
+    <p class="sub">
+      Create a token in MirrorMind → <strong>Settings → API</strong>, then paste it here.
+    </p>
+
+    <label for="base">MirrorMind URL</label>
+    <input id="base" type="url" placeholder="https://mirror-mindai.vercel.app" />
+
+    <label for="token">API token</label>
+    <input id="token" type="password" placeholder="mm_…" autocomplete="off" />
+
+    <div class="btns">
+      <button id="save">Save</button>
+      <button id="test">Test connection</button>
+    </div>
+    <div id="status"></div>
+
+    <script src="config.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>
