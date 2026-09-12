@@ -1,6 +1,6 @@
-# MirrorMind — Document Set Overview
+# Personal AI — Document Set Overview
 
-> **MirrorMind: Your AI Memory** — A personal AI that remembers what you see, hear, and learn during the day. Point a camera at a notice, textbook, circuit, timetable, or whiteboard; MirrorMind extracts the information, stores it in searchable memory, and later answers questions like *"What was written on the robotics club notice I saw this morning?"*
+> **Personal AI: Your AI Memory** — A personal AI that remembers what you see, hear, and learn during the day. Point a camera at a notice, textbook, circuit, timetable, or whiteboard; Personal AI extracts the information, stores it in searchable memory, and later answers questions like *"What was written on the robotics club notice I saw this morning?"*
 
 - **Status:** Concept / hackathon build (1-day MVP + roadmap)
 - **Owner:** harshgosalia007@gmail.com

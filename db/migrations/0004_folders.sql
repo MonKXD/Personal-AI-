@@ -1,5 +1,5 @@
 -- ================================================================= --
--- MirrorMind 0004 — folders (single-home, nestable)                  --
+-- Personal AI 0004 — folders (single-home, nestable)                  --
 -- Apply in the Supabase SQL editor after 0000..0003.                 --
 -- ================================================================= --
 --

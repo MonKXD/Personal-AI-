@@ -22,7 +22,7 @@ export async function GET() {
 
   return NextResponse.json({
     status: "ok",
-    service: "mirrormind-web",
+    service: "personal-ai-web",
     supabaseConfigured: isSupabaseConfigured,
     ai,
     time: new Date().toISOString(),

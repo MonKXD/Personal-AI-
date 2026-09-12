@@ -1,5 +1,5 @@
 -- ================================================================= --
--- MirrorMind 0014 — pinned memories + folder colour/emoji            --
+-- Personal AI 0014 — pinned memories + folder colour/emoji            --
 -- Apply in the Supabase SQL editor after 0000..0013.                 --
 -- ================================================================= --
 

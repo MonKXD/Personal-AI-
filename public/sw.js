@@ -1,4 +1,4 @@
-// MirrorMind — minimal service worker. Cache-first for static assets,
+// Personal AI — minimal service worker. Cache-first for static assets,
 // network-first (with a cached offline fallback) for page navigations.
 // Deliberately hand-written, no build step: this is app-shell caching only,
 // not an offline-first data layer.
@@ -64,9 +64,9 @@ self.addEventListener("push", (event) => {
   try {
     payload = event.data ? event.data.json() : {};
   } catch {
-    payload = { title: "MirrorMind", body: event.data && event.data.text() };
+    payload = { title: "Personal AI", body: event.data && event.data.text() };
   }
-  const title = payload.title || "MirrorMind";
+  const title = payload.title || "Personal AI";
   event.waitUntil(
     self.registration.showNotification(title, {
       body: payload.body || "",

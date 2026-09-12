@@ -10,7 +10,7 @@ export function InstallButton() {
 
   return (
     <Button variant="secondary" size="sm" onClick={promptInstall}>
-      <Download /> Install MirrorMind
+      <Download /> Install Personal AI
     </Button>
   );
 }

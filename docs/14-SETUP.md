@@ -1,6 +1,6 @@
 # 14 — Setup & Runbook
 
-**Product:** MirrorMind
+**Product:** Personal AI
 **Related:** [TRD](02-TRD.md) §9 · [Rules](06-RULES.md) §2 · [Architecture](03-ARCHITECTURE.md) §2
 
 ---
@@ -31,8 +31,8 @@ WEB_ORIGIN=http://localhost:5173  # CORS allowlist (dev). In compose: http://loc
 API_BASE_PATH=/api/v1
 
 # --- database ---
-DATABASE_URL=postgresql+asyncpg://mirror:mirror@db:5432/mirrormind
-# outside docker: postgresql+asyncpg://mirror:mirror@localhost:5432/mirrormind
+DATABASE_URL=postgresql+asyncpg://mirror:mirror@db:5432/personal-ai
+# outside docker: postgresql+asyncpg://mirror:mirror@localhost:5432/personal-ai
 
 # --- storage ---
 STORAGE_BACKEND=local             # local | s3
@@ -84,7 +84,7 @@ DEFAULT_USER_ID=demo-user
 ## 3. Quick start (Docker — recommended)
 
 ```bash
-git clone <repo> mirrormind && cd mirrormind
+git clone <repo> personal-ai && cd personal-ai
 cp .env.example .env         # then fill in the three API keys
 make up                      # docker compose up --build -d
 make migrate                 # runs alembic upgrade head inside the api container
@@ -109,7 +109,7 @@ cd api
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt -r requirements-dev.txt
 export $(grep -v '^#' ../.env | xargs)         # or use direnv
-export DATABASE_URL=postgresql+asyncpg://mirror:mirror@localhost:5432/mirrormind
+export DATABASE_URL=postgresql+asyncpg://mirror:mirror@localhost:5432/personal-ai
 alembic upgrade head
 uvicorn main:app --reload --port 8000
 ```
@@ -149,7 +149,7 @@ Set `WEB_ORIGIN=http://localhost:5173` in `.env` for CORS during dev.
 
 ```bash
 # psql into the running DB
-docker compose exec db psql -U mirror -d mirrormind
+docker compose exec db psql -U mirror -d personal-ai
 
 # confirm pgvector + HNSW index
 \dx                                   -- expect: vector, pg_trgm

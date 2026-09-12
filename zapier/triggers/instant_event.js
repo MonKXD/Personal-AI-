@@ -1,4 +1,4 @@
-// REST Hook trigger — instant events via MirrorMind webhooks.
+// REST Hook trigger — instant events via Personal AI webhooks.
 const subscribe = async (z, bundle) => {
   const res = await z.request({
     method: "POST",

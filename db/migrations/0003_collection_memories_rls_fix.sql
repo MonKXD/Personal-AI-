@@ -1,5 +1,5 @@
 -- ================================================================= --
--- MirrorMind 0003 — tighten collection_memories RLS                  --
+-- Personal AI 0003 — tighten collection_memories RLS                  --
 -- Apply in the Supabase SQL editor after 0000/0001/0002.             --
 -- ================================================================= --
 

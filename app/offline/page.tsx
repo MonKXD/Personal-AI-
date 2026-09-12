@@ -10,7 +10,7 @@ export default function OfflinePage() {
       <div>
         <h1 className="font-display text-xl font-bold text-foreground">You&rsquo;re offline</h1>
         <p className="mt-2 max-w-xs font-body text-sm text-muted-foreground">
-          MirrorMind needs a connection to read and remember new captures.
+          Personal AI needs a connection to read and remember new captures.
           Reconnect and try again.
         </p>
       </div>

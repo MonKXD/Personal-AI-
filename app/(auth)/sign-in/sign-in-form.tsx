@@ -22,7 +22,7 @@ const ERROR_MESSAGES: Record<string, string> = {
   missing_code: "That sign-in link didn't work. Request a fresh one.",
   oauth_failed: "Google sign-in failed. Try again or use an email link.",
   at_capacity:
-    "MirrorMind is at capacity right now — the beta is limited to a small group. Existing members can still sign in; new spots open up when someone leaves.",
+    "Personal AI is at capacity right now — the beta is limited to a small group. Existing members can still sign in; new spots open up when someone leaves.",
 };
 
 function friendlyError(raw: string): string {

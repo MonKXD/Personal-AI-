@@ -1,6 +1,6 @@
 # 03 — Architecture & App Flow
 
-**Product:** MirrorMind
+**Product:** Personal AI
 **Related:** [TRD](02-TRD.md) · [Schema](05-SCHEMA.md) · [API Spec](09-API-SPEC.md)
 
 ---

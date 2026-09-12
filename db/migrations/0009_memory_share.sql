@@ -1,5 +1,5 @@
 -- ================================================================= --
--- MirrorMind 0009 — public share link for a single memory            --
+-- Personal AI 0009 — public share link for a single memory            --
 -- Apply in the Supabase SQL editor after 0000..0008.                 --
 -- ================================================================= --
 --

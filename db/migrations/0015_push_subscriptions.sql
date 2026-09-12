@@ -1,5 +1,5 @@
 -- ================================================================= --
--- MirrorMind 0015 — Web Push subscriptions                           --
+-- Personal AI 0015 — Web Push subscriptions                           --
 -- Apply in the Supabase SQL editor after 0000..0014.                 --
 -- ================================================================= --
 --

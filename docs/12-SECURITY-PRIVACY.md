@@ -1,9 +1,9 @@
 # 12 — Security & Privacy
 
-**Product:** MirrorMind
+**Product:** Personal AI
 **Related:** [Rules](06-RULES.md) §7 · [TRD](02-TRD.md) §8 · [Prompts](10-PROMPTS.md) §6
 
-MirrorMind ingests photos of a person's real life (notices, timetables, notes, whiteboards) and runs an LLM over arbitrary text found in them. That creates three risk clusters: **sensitive data at rest/in transit**, **prompt injection via captured content**, and **model/supply-chain exposure**. This doc states the MVP stance and the roadmap.
+Personal AI ingests photos of a person's real life (notices, timetables, notes, whiteboards) and runs an LLM over arbitrary text found in them. That creates three risk clusters: **sensitive data at rest/in transit**, **prompt injection via captured content**, and **model/supply-chain exposure**. This doc states the MVP stance and the roadmap.
 
 ---
 
@@ -67,7 +67,7 @@ This is the highest-likelihood real attack because *the content is user-photogra
 - **Data minimization:** EXIF stripped; only derivatives (`display`, `thumb`) are sent to the model, not the full-res original.
 
 ### AI provider & training (important)
-MirrorMind's answer/extraction quality depends on a third-party model. Provider choice has a privacy dimension:
+Personal AI's answer/extraction quality depends on a third-party model. Provider choice has a privacy dimension:
 
 | Provider | Cost | Training on your data | Runs on Vercel |
 |---|---|---|---|
@@ -118,7 +118,7 @@ MirrorMind's answer/extraction quality depends on a third-party model. Provider 
 
 ## 8. Compliance notes (future, informational)
 
-- If MirrorMind stores other people's PII (names/contacts on notices), a real deployment needs: a privacy policy, lawful basis for processing, data-subject access/delete flows (the export/wipe roadmap item covers the mechanics), and a data-processing agreement with model providers.
+- If Personal AI stores other people's PII (names/contacts on notices), a real deployment needs: a privacy policy, lawful basis for processing, data-subject access/delete flows (the export/wipe roadmap item covers the mechanics), and a data-processing agreement with model providers.
 - Student data may fall under education-privacy regimes depending on jurisdiction; keep deployments self-hosted per user until reviewed.
 - Not in scope for the hackathon MVP; listed so it isn't forgotten.
 

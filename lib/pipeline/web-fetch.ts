@@ -19,7 +19,7 @@ const MAX_REDIRECTS = 3;
 const TIMEOUT_MS = 12_000;
 const MAX_TEXT = 40_000;
 const UA =
-  "Mozilla/5.0 (compatible; MirrorMindBot/1.0; +https://mirror-mindai.vercel.app)";
+  "Mozilla/5.0 (compatible; PersonalAIBot/1.0; +https://personal-ai.vercel.app)";
 
 export class WebFetchError extends Error {}
 

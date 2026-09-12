@@ -75,7 +75,7 @@ export default async function TodayPage() {
           <EmptyState
             icon={Sun}
             title="No digest yet"
-            description="Capture a few things today and MirrorMind will recap them here."
+            description="Capture a few things today and Personal AI will recap them here."
             action={
               <Button asChild>
                 <Link href="/capture">
@@ -135,7 +135,7 @@ export default async function TodayPage() {
             </span>
           </div>
           <p className="mb-3 mt-0.5 font-body text-xs text-muted-foreground/70">
-            MirrorMind wasn&rsquo;t confident it read these. Open one to fix the text — it re-embeds so chat stays accurate.
+            Personal AI wasn&rsquo;t confident it read these. Open one to fix the text — it re-embeds so chat stays accurate.
           </p>
           <ul className="space-y-1">
             {review.map((m) => {

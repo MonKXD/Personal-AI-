@@ -2,9 +2,9 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 /**
- * The MirrorMind mark — a violet sphere split into two "mind" hemispheres
+ * The Personal AI mark — a violet sphere split into two "mind" hemispheres
  * (cream + teal) with a soft specular highlight and a small teal orbit ring.
- * Reads on cream paper and on ink. Source: "MirrorMind Logo Final.dc.html".
+ * Reads on cream paper and on ink. Source: "Personal AI Logo Final.dc.html".
  */
 export function Orb({
   size = 38,
@@ -98,7 +98,7 @@ export function Logo({
       {showWord && (
         <span className="leading-none">
           <span className="font-display block text-[1.05rem] font-bold tracking-tight text-foreground">
-            MirrorMind
+            Personal AI
           </span>
           {withTagline && (
             <span className="mt-0.5 block font-body text-[11px] tracking-wide text-muted-foreground">

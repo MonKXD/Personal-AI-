@@ -8,11 +8,11 @@ export default function TermsPage() {
   return (
     <LegalProse title="Terms of Service" updated="8 September 2026">
       <p>
-        By using MirrorMind you agree to these terms. They&rsquo;re short on
+        By using Personal AI you agree to these terms. They&rsquo;re short on
         purpose.
       </p>
 
-      <h2>What MirrorMind is</h2>
+      <h2>What Personal AI is</h2>
       <p>
         A personal project offered free during a private beta. It is not a paid
         service. Access is limited, and may be closed, paused, or revoked at any
@@ -37,7 +37,7 @@ export default function TermsPage() {
 
       <h2>Your content</h2>
       <p>
-        You keep ownership of everything you capture. You grant MirrorMind only the
+        You keep ownership of everything you capture. You grant Personal AI only the
         permission needed to store, process, and display it back to you as part of
         the service. Processing involves a third-party AI provider — see the{" "}
         <Link href="/privacy">Privacy Policy</Link> for what that means during the

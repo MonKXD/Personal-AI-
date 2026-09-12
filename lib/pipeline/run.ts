@@ -267,7 +267,7 @@ export async function runPipeline(captureId: string): Promise<void> {
         userId: capture.userId,
         kind: "needs_review",
         title: "A capture may need a review",
-        body: `"${extraction.title}" — MirrorMind wasn't confident it read this. Open it to fix the text.`,
+        body: `"${extraction.title}" — Personal AI wasn't confident it read this. Open it to fix the text.`,
         href: `/memory/${memoryId}`,
         dedupeKey: `review:${memoryId}`,
       }).catch(() => {});

@@ -1,6 +1,6 @@
 # 10 — Prompt Library
 
-**Product:** MirrorMind
+**Product:** Personal AI
 **Owner of quality:** whoever edits a prompt bumps `prompt_version` and records it in [Memory](08-MEMORY.md) + `memories.model_meta`.
 **Related:** [Architecture](03-ARCHITECTURE.md) §4–5 · [Test Plan](13-TEST-PLAN.md) · [Security](12-SECURITY-PRIVACY.md)
 
@@ -14,7 +14,7 @@ All prompts live in `api/services/prompts/` as versioned templates (`extract_v1.
 
 ### System
 ```
-You are MirrorMind's extraction engine. You are given ONE photograph taken by a user
+You are Personal AI's extraction engine. You are given ONE photograph taken by a user
 of something in their environment: a printed notice, a handwritten timetable, a textbook
 page, a whiteboard, a circuit diagram, a lecture slide, or a handwritten note.
 
@@ -123,7 +123,7 @@ Client always receives `used_filters` = the merged result of rules + this call.
 
 ### System
 ```
-You are MirrorMind, the user's personal memory. You answer questions using ONLY the
+You are Personal AI, the user's personal memory. You answer questions using ONLY the
 CONTEXT blocks provided, which are excerpts from things the user captured (photos of
 notices, timetables, textbook pages, whiteboards, etc.).
 

@@ -18,7 +18,7 @@ Authorization: Bearer mm_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   `429 rate_limited` / `ai_budget_reached` · `4xx` errors are
   `{ "error_code": "...", "message": "..." }`.
 
-Base URL: `https://mirror-mindai.vercel.app`
+Base URL: `https://personal-ai.vercel.app`
 
 ## Endpoints
 
@@ -65,13 +65,13 @@ Query: `status` = `open` (default) · `done` · `dismissed`.
 Register delivery targets from code (this is what the Zapier REST-hook
 trigger uses). `POST { url, events?: ["memory.created", …] | ["*"] }` →
 `201 { id, url, events, secret }` — the `secret` signs deliveries
-(`X-MirrorMind-Signature`). Same events + payload shape as the Settings
+(`X-Personal AI-Signature`). Same events + payload shape as the Settings
 webhooks below.
 
 ## Example
 
 ```bash
-curl -s https://mirror-mindai.vercel.app/api/v1/ask \
+curl -s https://personal-ai.vercel.app/api/v1/ask \
   -H "Authorization: Bearer $MM_TOKEN" \
   -H "content-type: application/json" \
   -d '{"question":"what deadlines do I have this week?"}'
@@ -80,7 +80,7 @@ curl -s https://mirror-mindai.vercel.app/api/v1/ask \
 ## Webhooks
 
 Add one in **Settings → Webhooks** with a URL and the events you want.
-MirrorMind then POSTs to that URL:
+Personal AI then POSTs to that URL:
 
 ```json
 {
@@ -90,7 +90,7 @@ MirrorMind then POSTs to that URL:
 }
 ```
 
-Every request carries `X-MirrorMind-Signature: sha256=<hex>` —
+Every request carries `X-Personal AI-Signature: sha256=<hex>` —
 `HMAC-SHA256(secret, raw_body)`. Verify it before trusting the payload
 (the per-hook secret is shown in Settings).
 

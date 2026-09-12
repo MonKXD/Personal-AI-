@@ -50,4 +50,4 @@ export async function aiBudgetExceeded(): Promise<boolean> {
 }
 
 export const AI_BUDGET_MESSAGE =
-  "MirrorMind's shared daily AI budget is used up (free-tier limit). It resets at midnight IST — please try again tomorrow.";
+  "Personal AI's shared daily AI budget is used up (free-tier limit). It resets at midnight IST — please try again tomorrow.";

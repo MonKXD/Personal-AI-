@@ -34,8 +34,8 @@ async function deliver(hook: { id: string; url: string; secret: string }, body: 
         signal: ctrl.signal,
         headers: {
           "content-type": "application/json",
-          "user-agent": "MirrorMind-Webhook/1.0",
-          "x-mirrormind-signature": sign(hook.secret, body),
+          "user-agent": "Personal AI-Webhook/1.0",
+          "x-personal-ai-signature": sign(hook.secret, body),
         },
         body,
       });

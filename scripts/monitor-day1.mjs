@@ -39,7 +39,7 @@ try {
   const pct = BUDGET > 0 ? Math.round((calls / BUDGET) * 100) : 0;
   const capLine = caps.map((c) => `${c.status}:${c.n}`).join("  ") || "none";
 
-  console.log(`── MirrorMind day-1 monitor · ${new Date().toISOString()} ──`);
+  console.log(`── Personal AI day-1 monitor · ${new Date().toISOString()} ──`);
   console.log(`AI calls today   ${calls} / ${BUDGET}  (${pct}%)   ${pct >= 80 ? "⚠️  APPROACHING" : pct >= 50 ? "· watch" : "· ok"}`);
   console.log(`Captures today   ${capLine}`);
   console.log(`Chat questions   ${chats}`);

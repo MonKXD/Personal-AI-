@@ -1,9 +1,9 @@
 -- ================================================================= --
--- MirrorMind 0016 — Telegram bot linking                             --
+-- Personal AI 0016 — Telegram bot linking                             --
 -- Apply in the Supabase SQL editor after 0000..0015.                 --
 -- ================================================================= --
 --
--- Links one Telegram chat to one MirrorMind account. `link_code` is a
+-- Links one Telegram chat to one Personal AI account. `link_code` is a
 -- short-lived one-time code shown in Settings; the bot's /start <code>
 -- handler swaps it for the chat id.
 

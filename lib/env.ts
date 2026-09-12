@@ -125,7 +125,7 @@ const serverSchema = z
 
     // ---- Email (Resend) ----
     RESEND_API_KEY: optStr(10),
-    EMAIL_FROM: strWithDefault("MirrorMind <onboarding@resend.dev>"),
+    EMAIL_FROM: strWithDefault("Personal AI <onboarding@resend.dev>"),
 
     /** Optional Slack/Discord incoming-webhook URL — unexpected server errors
      * get a compact message posted here (see lib/observe.ts). Unset = logs only. */
@@ -136,7 +136,7 @@ const serverSchema = z
     VAPID_PUBLIC_KEY: optStr(20),
     VAPID_PRIVATE_KEY: optStr(20),
     NEXT_PUBLIC_VAPID_PUBLIC_KEY: optStr(20),
-    VAPID_SUBJECT: strWithDefault("mailto:owner@mirrormind.app"),
+    VAPID_SUBJECT: strWithDefault("mailto:owner@personal-ai.app"),
 
     /** Telegram capture bot (@BotFather). All three optional — unset = the
      * bot webhook 200s silently and the Settings "Connect Telegram" row is

@@ -11,7 +11,7 @@ const NOT_INVITED =
   "This email isn't on the invite list yet. Ask the owner to add you.";
 
 const AT_CAPACITY =
-  "MirrorMind is at capacity right now — the beta is limited to a small group. Existing members can still sign in; new spots open up when someone leaves.";
+  "Personal AI is at capacity right now — the beta is limited to a small group. Existing members can still sign in; new spots open up when someone leaves.";
 
 /** Allowlist check. Open sign-ups by default (INVITE_ONLY unset); fails open
  * if the table isn't there yet. The same gate runs again in

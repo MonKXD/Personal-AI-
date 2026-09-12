@@ -1,16 +1,16 @@
 {
   "manifest_version": 3,
-  "name": "Save to MirrorMind",
+  "name": "Save to Personal AI",
   "version": "1.0.0",
-  "description": "Save the current page, a link, or selected text to your MirrorMind memory.",
+  "description": "Save the current page, a link, or selected text to your Personal AI memory.",
   "permissions": ["contextMenus", "storage", "activeTab", "notifications"],
   "host_permissions": [
-    "https://mirror-mindai.vercel.app/*",
+    "https://personal-ai.vercel.app/*",
     "http://localhost:3000/*"
   ],
   "background": { "service_worker": "background.js" },
   "action": {
-    "default_title": "Save to MirrorMind",
+    "default_title": "Save to Personal AI",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon-16.png",

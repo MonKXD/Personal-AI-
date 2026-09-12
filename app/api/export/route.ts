@@ -24,7 +24,7 @@ export const GET = handle(async (req: Request) => {
       return new NextResponse(buildAnkiTsv(memories), {
         headers: {
           "content-type": "text/tab-separated-values; charset=utf-8",
-          "content-disposition": 'attachment; filename="mirrormind-anki.txt"',
+          "content-disposition": 'attachment; filename="personal-ai-anki.txt"',
           "cache-control": "no-store",
         },
       });
@@ -42,7 +42,7 @@ export const GET = handle(async (req: Request) => {
     return new NextResponse(new Uint8Array(zip), {
       headers: {
         "content-type": "application/zip",
-        "content-disposition": 'attachment; filename="mirrormind-markdown.zip"',
+        "content-disposition": 'attachment; filename="personal-ai-markdown.zip"',
         "cache-control": "no-store",
       },
     });
@@ -51,7 +51,7 @@ export const GET = handle(async (req: Request) => {
   return new NextResponse(JSON.stringify(data, null, 2), {
     headers: {
       "content-type": "application/json",
-      "content-disposition": 'attachment; filename="mirrormind-export.json"',
+      "content-disposition": 'attachment; filename="personal-ai-export.json"',
       "cache-control": "no-store",
     },
   });

@@ -1,5 +1,5 @@
 /**
- * Retrieval eval harness. Measures whether MirrorMind actually finds the right
+ * Retrieval eval harness. Measures whether Personal AI actually finds the right
  * memory for a question — the thing chat quality rests on.
  *
  *   npm run eval                 # retrieval only (recall@k, MRR) — real embeddings

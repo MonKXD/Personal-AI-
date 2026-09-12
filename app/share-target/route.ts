@@ -6,7 +6,7 @@ export const runtime = "nodejs";
 export const maxDuration = 60;
 
 /**
- * Handles the OS "Share to MirrorMind" sheet (see share_target in
+ * Handles the OS "Share to Personal AI" sheet (see share_target in
  * app/manifest.ts). This is a top-level browser navigation, not a fetch —
  * failures redirect back into the app rather than returning JSON.
  */

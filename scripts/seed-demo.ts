@@ -342,7 +342,7 @@ async function main() {
       email,
       password,
       email_confirm: true,
-      user_metadata: { full_name: "MirrorMind Demo" },
+      user_metadata: { full_name: "Personal AI Demo" },
     });
     if (error || !data.user) {
       console.error("Couldn't create the demo user:", error?.message);

@@ -1,5 +1,5 @@
 -- ================================================================= --
--- MirrorMind 0005 — in-app notifications                             --
+-- Personal AI 0005 — in-app notifications                             --
 -- Apply in the Supabase SQL editor after 0000..0004.                 --
 -- ================================================================= --
 --

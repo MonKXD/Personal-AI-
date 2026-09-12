@@ -16,10 +16,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { shareId } = await params;
   const mem = await getSharedMemory(shareId);
-  if (!mem) return { title: "Not found · MirrorMind" };
+  if (!mem) return { title: "Not found · Personal AI" };
   const title = mem.title || "Shared memory";
   return {
-    title: `${title} · MirrorMind`,
+    title: `${title} · Personal AI`,
     description: mem.summary || undefined,
     robots: { index: false },
     openGraph: { title, description: mem.summary || undefined, type: "article" },
@@ -101,7 +101,7 @@ export default async function SharedMemoryPage({
             href="/"
             className="font-body text-sm text-muted-foreground transition-colors hover:text-violet-bright"
           >
-            Remembered with <span className="font-semibold text-foreground/80">MirrorMind</span> —
+            Remembered with <span className="font-semibold text-foreground/80">Personal AI</span> —
             capture what you see, ask about it later &rarr;
           </Link>
         </footer>

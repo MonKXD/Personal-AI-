@@ -1,6 +1,6 @@
 # 13 — Test Plan
 
-**Product:** MirrorMind
+**Product:** Personal AI
 **Related:** [Rules](06-RULES.md) §8 · [Prompts](10-PROMPTS.md) §6 · [TRD](02-TRD.md) §8
 
 ---

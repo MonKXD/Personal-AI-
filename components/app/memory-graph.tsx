@@ -236,7 +236,7 @@ export function MemoryGraph({ nodes, edges }: { nodes: GNode[]; edges: GEdge[] }
   if (nodes.length === 0) {
     return (
       <div className="rounded-xl border border-border bg-card p-10 text-center shadow-card font-body text-sm text-muted-foreground">
-        Nothing to graph yet — capture a few things and MirrorMind links related
+        Nothing to graph yet — capture a few things and Personal AI links related
         memories automatically.
       </div>
     );

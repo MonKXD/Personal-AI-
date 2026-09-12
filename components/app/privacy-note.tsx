@@ -37,7 +37,7 @@ export function PrivacyNote({
         <span className="font-medium">About the AI</span>
       </div>
       <p className="mt-2">
-        While MirrorMind is in its free beta it runs on Google&rsquo;s free Gemini
+        While Personal AI is in its free beta it runs on Google&rsquo;s free Gemini
         tier, which means the text of your captures and questions may be used by
         Google to improve their models. Every query is still scoped to your own
         memories, and photographed text is treated as data, never as instructions —

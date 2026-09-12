@@ -1,6 +1,6 @@
 # 04 — Design (UX / UI)
 
-**Product:** MirrorMind
+**Product:** Personal AI
 **Related:** [PRD](01-PRD.md) · [Architecture](03-ARCHITECTURE.md) · [API Spec](09-API-SPEC.md)
 
 ---
@@ -18,7 +18,7 @@
 ## 2. Information architecture
 
 ```
-MirrorMind
+Personal AI
 ├── Capture (home)         "/"        capture + "Recent" strip
 ├── Timeline               "/timeline" all memories, filterable
 ├── Memory detail          "/memory/:id"
@@ -214,7 +214,7 @@ Toasts: `Memory ready`, `Saved`, `Deleted · Undo`, `Extraction failed`.
 
 ```
 ┌───────────────────────────────────────────────┐
-│  MirrorMind            Capture Timeline Chat   │
+│  Personal AI            Capture Timeline Chat   │
 ├───────────────────────────────────────────────┤
 │  ┌───────────────────────────┐   Recent        │
 │  │      [ webcam preview ]    │  ┌──┐┌──┐┌──┐   │

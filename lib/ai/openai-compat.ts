@@ -72,7 +72,7 @@ export class OpenAICompatChatModel implements ChatModel {
         headers: {
           authorization: `Bearer ${this.apiKey}`,
           "content-type": "application/json",
-          "x-title": "MirrorMind",
+          "x-title": "Personal AI",
         },
         body: JSON.stringify({
           model: this.model,

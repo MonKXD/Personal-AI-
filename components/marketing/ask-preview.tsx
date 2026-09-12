@@ -1,7 +1,7 @@
 import { CalendarDays, Megaphone, BookOpen, Sparkles } from "lucide-react";
 
 /**
- * Static, dependency-free visual of a MirrorMind answer with cited evidence.
+ * Static, dependency-free visual of a Personal AI answer with cited evidence.
  * Used on the landing hero — not a live component.
  */
 export function AskPreview() {
@@ -27,7 +27,7 @@ export function AskPreview() {
 
           <div className="space-y-2.5">
             <div className="flex items-center gap-1.5 text-xs font-bold text-success">
-              <Sparkles className="size-3.5" /> MirrorMind
+              <Sparkles className="size-3.5" /> Personal AI
             </div>
             <p className="text-[13.5px] leading-relaxed text-foreground">
               Your Physics lab is <b>Wed 2–4 PM in Lab-3</b>. The fee deadline is{" "}

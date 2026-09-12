@@ -1,5 +1,5 @@
 -- ================================================================= --
--- MirrorMind 0002 — voice notes, collections                         --
+-- Personal AI 0002 — voice notes, collections                         --
 -- Apply in the Supabase SQL editor after 0000_init.sql + 0001.       --
 -- ================================================================= --
 

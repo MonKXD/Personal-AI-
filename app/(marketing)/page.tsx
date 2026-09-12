@@ -38,7 +38,7 @@ export default function LandingPage() {
             </h1>
             <p className="mt-5 max-w-[520px] text-pretty text-[1.05rem] leading-relaxed text-muted-foreground">
               Point your camera at a notice, timetable, or textbook page — or drop in a
-              PDF, slide deck, or voice note. MirrorMind reads it, files it, and answers
+              PDF, slide deck, or voice note. Personal AI reads it, files it, and answers
               your questions later, with the original as proof.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -283,7 +283,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Does it work on my phone?",
-    a: "Yes. MirrorMind is a web app you can install to your home screen — open it in your phone's browser and choose “Add to Home Screen”. No app store, and you can capture straight from the camera or share a file into it.",
+    a: "Yes. Personal AI is a web app you can install to your home screen — open it in your phone's browser and choose “Add to Home Screen”. No app store, and you can capture straight from the camera or share a file into it.",
   },
   {
     q: "Is my data private?",

@@ -1,5 +1,5 @@
 -- ================================================================= --
--- MirrorMind 0007 — per-user accent colour                           --
+-- Personal AI 0007 — per-user accent colour                           --
 -- Apply in the Supabase SQL editor after 0000..0006.                 --
 -- ================================================================= --
 --

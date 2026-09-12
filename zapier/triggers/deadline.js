@@ -1,4 +1,4 @@
-// Polling trigger: open deadlines MirrorMind has extracted. Dedupes on `id`.
+// Polling trigger: open deadlines Personal AI has extracted. Dedupes on `id`.
 const perform = async (z, bundle) => {
   const res = await z.request({
     url: `${bundle.authData.base_url}/api/v1/action-items`,
@@ -12,7 +12,7 @@ module.exports = {
   noun: "Deadline",
   display: {
     label: "New or Open Deadline",
-    description: "Triggers for each open deadline MirrorMind found in your captures.",
+    description: "Triggers for each open deadline Personal AI found in your captures.",
   },
   operation: {
     type: "polling",

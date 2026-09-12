@@ -1,5 +1,5 @@
 -- ================================================================= --
--- MirrorMind 0001 — allowlist, prefs, reminder log                   --
+-- Personal AI 0001 — allowlist, prefs, reminder log                   --
 -- Apply in the Supabase SQL editor after 0000_init.sql.              --
 -- ================================================================= --
 

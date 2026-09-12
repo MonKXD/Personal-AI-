@@ -184,7 +184,7 @@ export default async function SettingsPage() {
           </h2>
           <div className="mt-3 space-y-3 rounded-xl border border-border bg-card p-4 shadow-card">
             <p className="font-body text-sm text-muted-foreground">
-              Install MirrorMind for faster access and a share-to-capture
+              Install Personal AI for faster access and a share-to-capture
               shortcut from your phone&rsquo;s share sheet.
             </p>
             <InstallButton />

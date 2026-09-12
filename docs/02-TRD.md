@@ -1,6 +1,6 @@
 # 02 — Technical Requirements Document (TRD)
 
-**Product:** MirrorMind
+**Product:** Personal AI
 **Version:** 0.1 (MVP)
 **Related:** [PRD](01-PRD.md) · [Architecture](03-ARCHITECTURE.md) · [Schema](05-SCHEMA.md) · [API Spec](09-API-SPEC.md)
 

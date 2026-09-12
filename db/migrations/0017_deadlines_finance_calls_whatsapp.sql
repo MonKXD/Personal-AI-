@@ -1,5 +1,5 @@
 -- ================================================================= --
--- MirrorMind 0017 — deadline engine, finance, calling, WhatsApp      --
+-- Personal AI 0017 — deadline engine, finance, calling, WhatsApp      --
 -- Apply in the Supabase SQL editor after 0000..0016.                 --
 -- ================================================================= --
 --

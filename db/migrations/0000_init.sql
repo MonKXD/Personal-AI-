@@ -1,5 +1,5 @@
 -- ================================================================= --
--- MirrorMind — initial schema                                        --
+-- Personal AI — initial schema                                        --
 -- Target: Supabase Postgres (with the `auth` schema present).        --
 -- Apply by pasting into the Supabase SQL editor, or via the CLI.     --
 -- Mirrors docs/05-SCHEMA.md; adds Supabase auth wiring + RLS.        --

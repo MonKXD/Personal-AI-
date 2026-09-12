@@ -34,13 +34,13 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "MirrorMind — Your AI Memory",
-    template: "%s · MirrorMind",
+    default: "Personal AI — Your AI Memory",
+    template: "%s · Personal AI",
   },
   description:
-    "Point your camera at a notice, timetable, textbook page, or whiteboard. MirrorMind reads it, remembers it, and answers your questions later — with the original as evidence.",
-  applicationName: "MirrorMind",
-  appleWebApp: { capable: true, title: "MirrorMind", statusBarStyle: "black-translucent" },
+    "Point your camera at a notice, timetable, textbook page, or whiteboard. Personal AI reads it, remembers it, and answers your questions later — with the original as evidence.",
+  applicationName: "Personal AI",
+  appleWebApp: { capable: true, title: "Personal AI", statusBarStyle: "black-translucent" },
   keywords: [
     "AI memory",
     "visual memory",
@@ -49,20 +49,20 @@ export const metadata: Metadata = {
     "second brain",
     "note capture",
   ],
-  authors: [{ name: "MirrorMind" }],
+  authors: [{ name: "Personal AI" }],
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "MirrorMind — Your AI Memory",
+    title: "Personal AI — Your AI Memory",
     description:
-      "See it once, remember forever. MirrorMind gives an AI a memory of your day.",
-    siteName: "MirrorMind",
+      "See it once, remember forever. Personal AI gives an AI a memory of your day.",
+    siteName: "Personal AI",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MirrorMind — Your AI Memory",
+    title: "Personal AI — Your AI Memory",
     description:
-      "See it once, remember forever. MirrorMind gives an AI a memory of your day.",
+      "See it once, remember forever. Personal AI gives an AI a memory of your day.",
   },
   icons: {
     icon: [

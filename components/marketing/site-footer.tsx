@@ -38,7 +38,7 @@ export function SiteFooter() {
         />
       </div>
       <div className="container-px mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 border-t border-border py-6 text-xs text-muted-foreground">
-        <span>© {new Date().getFullYear()} MirrorMind</span>
+        <span>© {new Date().getFullYear()} Personal AI</span>
         <Link
           href="/sign-in"
           className="font-semibold text-primary transition-colors hover:text-violet-bright"

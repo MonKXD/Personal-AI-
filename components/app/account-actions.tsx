@@ -21,7 +21,7 @@ export function AccountActions() {
       const a = document.createElement("a");
       const ext = format === "json" ? "json" : format === "md" ? "zip" : "txt";
       a.href = url;
-      a.download = `mirrormind-${format}-${new Date().toISOString().slice(0, 10)}.${ext}`;
+      a.download = `personal-ai-${format}-${new Date().toISOString().slice(0, 10)}.${ext}`;
       a.click();
       URL.revokeObjectURL(url);
     } catch {

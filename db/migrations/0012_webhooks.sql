@@ -1,10 +1,10 @@
 -- ================================================================= --
--- MirrorMind 0012 — outbound webhooks                                --
+-- Personal AI 0012 — outbound webhooks                                --
 -- Apply in the Supabase SQL editor after 0000..0011.                 --
 -- ================================================================= --
 --
 -- "When X happens, POST to my URL." Deliveries are signed with
--- HMAC-SHA256 of the body using `secret` (X-MirrorMind-Signature header).
+-- HMAC-SHA256 of the body using `secret` (X-Personal AI-Signature header).
 -- A hook is auto-disabled after 15 consecutive failures.
 
 create table if not exists public.webhooks (

@@ -1,6 +1,6 @@
 # 08 — Project Memory
 
-**Product:** MirrorMind
+**Product:** Personal AI
 **Purpose:** the living context an AI assistant (or a returning human) should load before working. Keep entries short, dated, and factual. Newest decisions on top of each list.
 **Related:** every other doc. When something here changes a requirement, also change the source doc.
 
@@ -8,7 +8,7 @@
 
 ## 1. One-paragraph project state
 
-MirrorMind is at **concept / pre-build**. The full document set (PRD, TRD, Architecture, Design, Schema, Rules, Tracker, this Memory, API Spec, Prompts, Demo Script, Security, Test Plan, Setup) exists as v0.1. No code yet. Immediate next step per [Tracker](07-TRACKER.md): milestone **M0** (repo + infra). Target for first usable build: a 12-hour hackathon day.
+Personal AI is at **concept / pre-build**. The full document set (PRD, TRD, Architecture, Design, Schema, Rules, Tracker, this Memory, API Spec, Prompts, Demo Script, Security, Test Plan, Setup) exists as v0.1. No code yet. Immediate next step per [Tracker](07-TRACKER.md): milestone **M0** (repo + infra). Target for first usable build: a 12-hour hackathon day.
 
 ---
 
@@ -39,7 +39,7 @@ MirrorMind is at **concept / pre-build**. The full document set (PRD, TRD, Archi
 | DL-20 | 2026-09-04 | **Auth = Supabase Auth**, email magic link + Google OAuth, no passwords | "User-based" product per user's goal; magic link is premium-feeling and removes password handling/rules-compliance concerns | Clerk (cost as it grows), Auth.js self-host (more wiring) |
 | DL-19 | 2026-09-04 | **Full TypeScript / Next.js 16 (App Router)** replaces the hackathon FastAPI+Docker+React/Vite plan (supersedes DL-2, DL-3, DL-4, DL-5) | Machine has no Docker/Homebrew and only Python 3.9; user has Vercel; solo ship-to-market. One language, one deploy. AI pipeline runs in Route Handlers / Server Actions behind adapter interfaces | Keep FastAPI (2 deploys, install Python 3.11), hybrid Next + thin Python API (2 languages) |
 | DL-18 | 2026-09-04 | Project scope pivot: **market launch + CV project**, premium multi-user product — not a 1-day hackathon | User's explicit ask. Raises the bar on design, auth, and polish; the 8+6 spec docs remain the north star, but MVP non-goals N1 (no auth) is reversed | — |
-| DL-17 | 2026-09-04 | Folder renamed `Mirror MInd ` → `mirrormind` | Trailing space + spaces break Vercel project names, git, shell tooling | Keep the name (constant friction) |
+| DL-17 | 2026-09-04 | Folder renamed `Mirror MInd ` → `personal-ai` | Trailing space + spaces break Vercel project names, git, shell tooling | Keep the name (constant friction) |
 | DL-16 | 2026-09-04 | Vision extraction stays a single multimodal LLM call (carried from DL-6); embeddings default `voyage-3.5` @ 1024 dims; `EMBEDDING_DIMS` asserted == `vector(n)` column == `db/vector.ts` | Unchanged rationale; now enforced in `lib/env.ts` and `db/vector.ts` | — |
 | DL-15 | 2026-09-04 | Drizzle ORM for typed queries, but the **hand-written SQL migration is authoritative** (`db/migrations/0000_init.sql`) | pgvector HNSW, RLS policies, `auth.users` triggers, and the storage bucket are cleaner in raw SQL than drizzle-kit generate | drizzle-kit generate only (weak on extensions/RLS), Prisma (pgvector + Supabase friction) |
 | DL-14 | 2026-09-04 | Ship 6 extra docs (API Spec, Prompts, Demo Script, Security, Test Plan, Setup) alongside the 8 requested | Parallel build under time pressure needs frozen contracts, tuned prompts, a rehearsed demo, and an explicit security stance | Folding them into TRD (would bloat, get skimmed) |
@@ -125,4 +125,4 @@ MirrorMind is at **concept / pre-build**. The full document set (PRD, TRD, Archi
   don't confuse `deadlines` (new, source-agnostic) with the existing
   `action_items` (capture-derived only, untouched) — they're intentionally
   separate tables, not a migration of one into the other.
-- **2026-09-04 (later)** — Scope pivoted to market/CV product (DL-18). Stack pivoted to full TS / Next.js 16 + Supabase (DL-19–21). **Foundation build shipped**: renamed folder to `mirrormind`, scaffolded Next app, design-token system (`app/globals.css`), shadcn-style primitives, marketing site (landing/pricing/privacy/terms), Supabase auth (magic link + Google) with `proxy.ts` session refresh + route guarding, authenticated app shell + Capture/Timeline/Chat/Today/Memory/Settings screens (UI complete, data pending), Drizzle schema + authoritative SQL migration (`db/migrations/0000_init.sql`) with RLS + pgvector + storage bucket. `typecheck`, `lint`, `build` all green. See `docs/15-BUILD-LOG.md`. **Next**: wire Supabase project + run migration; then the capture→extract→embed→recall pipeline (adapters in `lib/ai/*`, Route Handlers per `docs/09-API-SPEC.md`). Landmine: the AI adapters must keep captured text out of system prompts (DL-10).
+- **2026-09-04 (later)** — Scope pivoted to market/CV product (DL-18). Stack pivoted to full TS / Next.js 16 + Supabase (DL-19–21). **Foundation build shipped**: renamed folder to `personal-ai`, scaffolded Next app, design-token system (`app/globals.css`), shadcn-style primitives, marketing site (landing/pricing/privacy/terms), Supabase auth (magic link + Google) with `proxy.ts` session refresh + route guarding, authenticated app shell + Capture/Timeline/Chat/Today/Memory/Settings screens (UI complete, data pending), Drizzle schema + authoritative SQL migration (`db/migrations/0000_init.sql`) with RLS + pgvector + storage bucket. `typecheck`, `lint`, `build` all green. See `docs/15-BUILD-LOG.md`. **Next**: wire Supabase project + run migration; then the capture→extract→embed→recall pipeline (adapters in `lib/ai/*`, Route Handlers per `docs/09-API-SPEC.md`). Landmine: the AI adapters must keep captured text out of system prompts (DL-10).

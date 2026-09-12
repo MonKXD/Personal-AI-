@@ -28,7 +28,7 @@ export function CalendarFeed({ url }: { url: string }) {
     <div className="space-y-3">
       <p className="font-body text-sm text-muted-foreground">
         Subscribe from Apple Calendar, Google Calendar, or Outlook to see every
-        deadline MirrorMind reads. Updates a few times a day. Anyone with this
+        deadline Personal AI reads. Updates a few times a day. Anyone with this
         link can see your deadlines, so keep it private.
       </p>
       <div className="flex items-center gap-2 rounded-lg border border-border bg-muted p-2">

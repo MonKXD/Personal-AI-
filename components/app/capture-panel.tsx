@@ -544,7 +544,7 @@ export function CapturePanel({
             </div>
             <p className="font-body text-sm leading-relaxed text-muted-foreground">
               Paste a link to an article, a docs page, or a blog post.
-              <br className="hidden sm:block" /> MirrorMind reads it and remembers it.
+              <br className="hidden sm:block" /> Personal AI reads it and remembers it.
             </p>
             <div className="flex w-full max-w-md gap-2">
               <input

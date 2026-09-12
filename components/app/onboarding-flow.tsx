@@ -8,7 +8,7 @@ const SLIDES = [
   {
     icon: "👁",
     title: "See it once,\nremember forever",
-    body: "Point your camera at notices, textbooks, whiteboards — MirrorMind captures and stores everything instantly.",
+    body: "Point your camera at notices, textbooks, whiteboards — Personal AI captures and stores everything instantly.",
   },
   {
     icon: "🔍",
@@ -18,7 +18,7 @@ const SLIDES = [
   {
     icon: "🧠",
     title: "Your memory,\namplified",
-    body: "MirrorMind learns what matters to you and surfaces the right memory at the right time.",
+    body: "Personal AI learns what matters to you and surfaces the right memory at the right time.",
   },
   {
     icon: "📸",

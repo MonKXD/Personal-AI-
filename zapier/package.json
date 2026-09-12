@@ -1,7 +1,7 @@
 {
-  "name": "mirrormind-zapier",
+  "name": "personal-ai-zapier",
   "version": "1.0.0",
-  "description": "MirrorMind integration for Zapier — talks to the public API (/api/v1).",
+  "description": "Personal AI integration for Zapier — talks to the public API (/api/v1).",
   "private": true,
   "main": "index.js",
   "scripts": {

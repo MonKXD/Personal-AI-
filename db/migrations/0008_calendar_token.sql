@@ -1,5 +1,5 @@
 -- ================================================================= --
--- MirrorMind 0008 — per-user calendar feed token                     --
+-- Personal AI 0008 — per-user calendar feed token                     --
 -- Apply in the Supabase SQL editor after 0000..0007.                 --
 -- ================================================================= --
 --

@@ -268,7 +268,7 @@ export function ChatShell({
             </Button>
           </div>
           <p className="mt-2 text-center font-body text-xs text-muted-foreground/70">
-            MirrorMind answers only from what you&rsquo;ve captured.
+            Personal AI answers only from what you&rsquo;ve captured.
           </p>
         </form>
       </div>
@@ -284,7 +284,7 @@ function AssistantMessage({
   return (
     <div className="max-w-[95%] space-y-3">
       <div className="flex items-center gap-1.5 font-body text-xs font-semibold text-violet-bright">
-        <Sparkles className="size-3.5" /> MirrorMind
+        <Sparkles className="size-3.5" /> Personal AI
       </div>
       <p
         className={cn(

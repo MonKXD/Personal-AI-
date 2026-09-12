@@ -1,6 +1,6 @@
-# MirrorMind
+# Personal AI
 
-**Your AI memory for the physical world.** Point your camera at a notice, timetable, textbook page, or whiteboard. MirrorMind reads it, structures it, remembers it — and answers your questions later, showing the original image as evidence.
+**Your AI memory for the physical world.** Point your camera at a notice, timetable, textbook page, or whiteboard. Personal AI reads it, structures it, remembers it — and answers your questions later, showing the original image as evidence.
 
 > Status: capture → AI extraction → structured memory → embeddings → cited recall works end to end. Runs on deterministic offline fixtures until an AI key is added.
 
@@ -107,4 +107,4 @@ privacy, test plan, setup, and the build log.
 
 ## License
 
-Proprietary — © MirrorMind. All rights reserved.
+Proprietary — © Personal AI. All rights reserved.

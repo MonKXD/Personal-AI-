@@ -103,7 +103,7 @@ const STEPS: Step[] = [
     icon: ScanText,
     title: "It reads everything",
     caption:
-      "MirrorMind transcribes every word, detects what it's looking at, and pulls out dates, rooms, deadlines and key terms.",
+      "Personal AI transcribes every word, detects what it's looking at, and pulls out dates, rooms, deadlines and key terms.",
     render: () => (
       <Frame label="Understanding">
         <div className="space-y-2.5">

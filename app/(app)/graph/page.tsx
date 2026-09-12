@@ -15,7 +15,7 @@ export default async function GraphPage() {
     <AppPage>
       <PageHeader
         title="Graph"
-        description="How your memories connect — MirrorMind links related captures automatically."
+        description="How your memories connect — Personal AI links related captures automatically."
       />
       <div className="mt-6">
         <MemoryGraph nodes={nodes} edges={edges} />

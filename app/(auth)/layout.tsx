@@ -47,7 +47,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           <p className="max-w-sm text-sm text-muted-foreground">{pick.a}</p>
           <div className="mt-6 h-px w-24 bg-border" />
           <p className="max-w-sm text-sm text-muted-foreground">
-            MirrorMind reads what you capture, remembers it, and shows the original
+            Personal AI reads what you capture, remembers it, and shows the original
             image as evidence for every answer.
           </p>
         </div>

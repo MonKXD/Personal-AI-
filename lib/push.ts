@@ -16,7 +16,7 @@ function configure(): boolean {
   const priv = process.env.VAPID_PRIVATE_KEY;
   if (!pub || !priv) return false;
   webpush.setVapidDetails(
-    process.env.VAPID_SUBJECT || "mailto:owner@mirrormind.app",
+    process.env.VAPID_SUBJECT || "mailto:owner@personal-ai.app",
     pub,
     priv,
   );

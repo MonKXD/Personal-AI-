@@ -11,7 +11,7 @@ module.exports = {
   key: "ask",
   noun: "Answer",
   display: {
-    label: "Ask MirrorMind",
+    label: "Ask Personal AI",
     description: "Asks your memory a question and returns a cited answer.",
   },
   operation: {

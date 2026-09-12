@@ -57,7 +57,7 @@ function line(ok: boolean, label: string, extra = "") {
 }
 
 async function main() {
-  console.log("\nMirrorMind · Supabase check\n");
+  console.log("\nPersonal AI · Supabase check\n");
 
   if (!url) {
     line(false, "DATABASE_URL not set");

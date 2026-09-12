@@ -4,12 +4,12 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ------------------------------------------------------------------ *
- * MirrorMind — "A memory that answers back, and shows its work."
+ * Personal AI — "A memory that answers back, and shows its work."
  * Warm cream paper ground, near-black violet-cast ink, a violet
  * primary with a teal companion, generous radii, soft low shadows,
  * and slow aurora blooms behind a faint dot grid.
  * Bricolage Grotesque display · Sora body · Space Mono for data.
- * Handoff: Claude Design — MirrorMind.dc.html
+ * Handoff: Claude Design — PersonalAI.dc.html
  *
  * Light is the primary reference. `.dark` is the matching warm-dark
  * palette — same violet/teal identity on a violet-ink ground.

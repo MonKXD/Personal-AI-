@@ -41,7 +41,7 @@ export function buildIcs(items: IcsItem[], calName: string): string {
   const lines: string[] = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//MirrorMind//Deadlines//EN",
+    "PRODID:-//Personal AI//Deadlines//EN",
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
     `X-WR-CALNAME:${esc(calName)}`,
@@ -54,12 +54,12 @@ export function buildIcs(items: IcsItem[], calName: string): string {
     const end = new Date(start.getTime() + 86_400_000);
     lines.push(
       "BEGIN:VEVENT",
-      `UID:${it.id}@mirrormind`,
+      `UID:${it.id}@personal-ai`,
       `DTSTAMP:${stamp(now)}`,
       `DTSTART;VALUE=DATE:${ymd(start)}`,
       `DTEND;VALUE=DATE:${ymd(end)}`,
       `SUMMARY:${esc((it.done ? "✓ " : "") + it.title)}`,
-      `DESCRIPTION:${esc(it.memoryTitle ? `From: ${it.memoryTitle}` : "MirrorMind")}`,
+      `DESCRIPTION:${esc(it.memoryTitle ? `From: ${it.memoryTitle}` : "Personal AI")}`,
       `STATUS:${it.done ? "CONFIRMED" : "TENTATIVE"}`,
       "TRANSP:TRANSPARENT",
     );

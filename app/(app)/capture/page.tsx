@@ -55,7 +55,7 @@ export default async function CapturePage({
     <AppPage>
       <PageHeader
         title="Capture"
-        description="Point your camera, record a note, or drop a link — MirrorMind reads it and remembers."
+        description="Point your camera, record a note, or drop a link — Personal AI reads it and remembers."
       />
 
       <div className="mt-6 grid gap-8 lg:grid-cols-[1fr_320px]">

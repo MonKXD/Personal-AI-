@@ -1,6 +1,6 @@
 # 09 — API Specification
 
-**Product:** MirrorMind
+**Product:** Personal AI
 **Base URL:** `/api/v1`
 **Auth (MVP):** header `X-User-Id: demo-user` (defaulted if absent). Real auth later.
 **Content type:** `application/json` unless noted. Times: ISO-8601 UTC (`...Z`).

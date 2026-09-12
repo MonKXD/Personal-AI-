@@ -47,7 +47,7 @@ export function Webhooks({ hooks }: { hooks: WebhookView[] }) {
     <div className="space-y-4">
       <p className="font-body text-sm text-muted-foreground">
         POST to your URL when things happen. Each request carries an{" "}
-        <code className="text-muted-foreground">X-MirrorMind-Signature</code> header —
+        <code className="text-muted-foreground">X-Personal AI-Signature</code> header —
         <code className="text-muted-foreground"> sha256=HMAC(secret, body)</code>. Auto-disabled
         after 15 straight failures.
       </p>
@@ -56,7 +56,7 @@ export function Webhooks({ hooks }: { hooks: WebhookView[] }) {
         <input
           name="url"
           type="url"
-          placeholder="https://your-app.com/hooks/mirrormind"
+          placeholder="https://your-app.com/hooks/personal-ai"
           className="w-full rounded-lg border border-border bg-muted px-3 py-2 font-body text-sm text-foreground outline-none placeholder:text-muted-foreground/70 focus-visible:border-violet/40"
         />
         <div className="grid gap-1.5 sm:grid-cols-2">

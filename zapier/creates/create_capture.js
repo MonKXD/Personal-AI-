@@ -16,8 +16,8 @@ module.exports = {
   key: "create_capture",
   noun: "Capture",
   display: {
-    label: "Save to MirrorMind",
-    description: "Saves a link or a note to your MirrorMind memory.",
+    label: "Save to Personal AI",
+    description: "Saves a link or a note to your Personal AI memory.",
   },
   operation: {
     perform,

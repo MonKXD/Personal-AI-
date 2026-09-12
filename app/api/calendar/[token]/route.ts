@@ -31,10 +31,10 @@ export async function GET(
       done: i.status === "done",
     }));
 
-  return new Response(buildIcs(events, "MirrorMind deadlines"), {
+  return new Response(buildIcs(events, "Personal AI deadlines"), {
     headers: {
       "content-type": "text/calendar; charset=utf-8",
-      "content-disposition": 'inline; filename="mirrormind.ics"',
+      "content-disposition": 'inline; filename="personal-ai.ics"',
       "cache-control": "public, max-age=1800",
     },
   });

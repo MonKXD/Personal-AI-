@@ -4,9 +4,9 @@
 importScripts("config.js");
 
 const MENUS = [
-  { id: "mm-page", title: "Save this page to MirrorMind", contexts: ["page"] },
-  { id: "mm-link", title: "Save link to MirrorMind", contexts: ["link"] },
-  { id: "mm-selection", title: "Save selection to MirrorMind", contexts: ["selection"] },
+  { id: "mm-page", title: "Save this page to Personal AI", contexts: ["page"] },
+  { id: "mm-link", title: "Save link to Personal AI", contexts: ["link"] },
+  { id: "mm-selection", title: "Save selection to Personal AI", contexts: ["selection"] },
 ];
 
 chrome.runtime.onInstalled.addListener(() => {
@@ -19,7 +19,7 @@ function toast(ok, msg) {
   chrome.notifications.create({
     type: "basic",
     iconUrl: "icons/icon-128.png",
-    title: ok ? "Saved to MirrorMind" : "MirrorMind",
+    title: ok ? "Saved to Personal AI" : "Personal AI",
     message: msg,
   });
   // brief badge cue

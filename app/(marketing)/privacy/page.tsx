@@ -7,7 +7,7 @@ export default function PrivacyPage() {
   return (
     <LegalProse title="Privacy Policy" updated="8 September 2026">
       <p>
-        MirrorMind is a small personal project, currently in a private beta open to
+        Personal AI is a small personal project, currently in a private beta open to
         a handful of people. This page explains what is stored, how captures are
         processed, and the controls you have. Plain language, no dark patterns.
       </p>
@@ -18,7 +18,7 @@ export default function PrivacyPage() {
           smaller display and thumbnail versions of images.</li>
         <li>The text and structured details extracted from them (dates, rooms,
           deadlines, key terms, and so on).</li>
-        <li>Your questions and MirrorMind&rsquo;s answers, so your history is there
+        <li>Your questions and Personal AI&rsquo;s answers, so your history is there
           when you come back.</li>
         <li>Your account email — used for sign-in, and for reminder / weekly-recap
           emails if you leave those switched on (Settings lets you turn them off).</li>
@@ -28,13 +28,13 @@ export default function PrivacyPage() {
       <p>
         To read a capture and to answer your questions, the relevant image or text
         is sent to <strong>Google&rsquo;s Gemini API</strong>. During the beta,
-        MirrorMind runs on Google&rsquo;s <strong>free tier</strong>, and under
+        Personal AI runs on Google&rsquo;s <strong>free tier</strong>, and under
         Google&rsquo;s terms for that tier{" "}
         <strong>
           your prompts and the model&rsquo;s responses may be used by Google to
           improve their products, and human reviewers may see them
         </strong>
-        . MirrorMind itself does not sell your data or train any model on it, but it
+        . Personal AI itself does not sell your data or train any model on it, but it
         cannot change what Google does with free-tier traffic. Practical advice:{" "}
         <strong>don&rsquo;t capture anything you&rsquo;d be unwilling to share with
         Google</strong> while the app is in this beta. A future paid tier would not
@@ -47,7 +47,7 @@ export default function PrivacyPage() {
 
       <h2>Prompt-injection safety</h2>
       <p>
-        Text found inside a capture is treated strictly as data. MirrorMind does not
+        Text found inside a capture is treated strictly as data. Personal AI does not
         follow instructions that appear in a photographed notice, email, or
         whiteboard.
       </p>

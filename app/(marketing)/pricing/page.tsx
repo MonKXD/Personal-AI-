@@ -8,7 +8,7 @@ import { Reveal } from "@/components/reveal";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "MirrorMind is free while it's in a small private beta. Pro and Teams are on the way.",
+    "Personal AI is free while it's in a small private beta. Pro and Teams are on the way.",
 };
 
 type Cell = boolean | string;
@@ -48,7 +48,7 @@ export default function PricingPage() {
           </p>
           <h1 className="mt-3 text-4xl font-bold tracking-tight">Free while it&rsquo;s small</h1>
           <p className="mt-3 text-muted-foreground">
-            MirrorMind is in a private beta capped at a handful of people, so the whole
+            Personal AI is in a private beta capped at a handful of people, so the whole
             app is free right now. Pro and Teams are being built — the shape below is
             what they&rsquo;ll cover.
           </p>

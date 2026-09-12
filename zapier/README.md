@@ -1,6 +1,6 @@
-# MirrorMind — Zapier integration
+# Personal AI — Zapier integration
 
-A `zapier-platform` app that wires MirrorMind's public API (`/api/v1`, see
+A `zapier-platform` app that wires Personal AI's public API (`/api/v1`, see
 `docs/16-API.md`) into Zapier.
 
 ## Triggers
@@ -15,12 +15,12 @@ A `zapier-platform` app that wires MirrorMind's public API (`/api/v1`, see
 
 | Key | Source |
 |---|---|
-| **Save to MirrorMind** | `POST /api/v1/captures` (`url` or `text` + `title`) |
-| **Ask MirrorMind** | `POST /api/v1/ask` |
+| **Save to Personal AI** | `POST /api/v1/captures` (`url` or `text` + `title`) |
+| **Ask Personal AI** | `POST /api/v1/ask` |
 
 ## Auth
 
-Custom API-key. The user pastes a token from **MirrorMind → Settings → API**;
+Custom API-key. The user pastes a token from **Personal AI → Settings → API**;
 it's sent as `Authorization: Bearer mm_…`. Auth test hits `GET /api/v1/me`.
 
 ## Publish
@@ -29,7 +29,7 @@ it's sent as `Authorization: Bearer mm_…`. Auth test hits `GET /api/v1/me`.
 cd zapier
 npm install
 npx zapier login
-npx zapier register "MirrorMind"   # first time only
+npx zapier register "Personal AI"   # first time only
 npx zapier push
 ```
 

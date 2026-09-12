@@ -1,6 +1,6 @@
 # 06 — Rules (Engineering Conventions & AI-Assistant Rules)
 
-**Product:** MirrorMind
+**Product:** Personal AI
 **Applies to:** all contributors and any AI coding assistant working in this repo.
 **Related:** [TRD](02-TRD.md) · [Schema](05-SCHEMA.md) · [Security & Privacy](12-SECURITY-PRIVACY.md)
 

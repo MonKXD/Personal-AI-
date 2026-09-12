@@ -1,5 +1,5 @@
 -- ================================================================= --
--- MirrorMind 0006 — shared daily AI-call budget                       --
+-- Personal AI 0006 — shared daily AI-call budget                       --
 -- Apply in the Supabase SQL editor after 0000..0005.                  --
 -- ================================================================= --
 --

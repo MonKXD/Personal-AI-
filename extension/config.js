@@ -1,7 +1,7 @@
 /* Shared config + API client. Loaded by the service worker (importScripts)
  * and by the popup / options pages (<script>). No modules — max compat. */
 
-const DEFAULT_BASE = "https://mirror-mindai.vercel.app";
+const DEFAULT_BASE = "https://personal-ai.vercel.app";
 
 const MM = {
   async getConfig() {
@@ -25,7 +25,7 @@ const MM = {
       if (!res.ok) return { ok: false, error: `HTTP ${res.status}` };
       return { ok: true };
     } catch (e) {
-      return { ok: false, error: "Can't reach MirrorMind." };
+      return { ok: false, error: "Can't reach Personal AI." };
     }
   },
 
@@ -43,7 +43,7 @@ const MM = {
       if (!res.ok) return { ok: false, error: body.message || `HTTP ${res.status}` };
       return { ok: true, id: body.id, deduped: !!body.deduped };
     } catch (e) {
-      return { ok: false, error: "Can't reach MirrorMind." };
+      return { ok: false, error: "Can't reach Personal AI." };
     }
   },
 };

@@ -1,6 +1,6 @@
 # 01 — Product Requirements Document (PRD)
 
-**Product:** MirrorMind — Your AI Memory
+**Product:** Personal AI — Your AI Memory
 **Version:** 0.1 (MVP)
 **Author:** harshgosalia007@gmail.com
 **Date:** 2026-09-03
@@ -10,7 +10,7 @@
 
 ## 1. Summary
 
-MirrorMind is a personal memory assistant for the physical world. A user captures things they encounter during the day — a printed notice, a handwritten timetable, a textbook page, a whiteboard, a circuit diagram — as photos (or, later, audio). MirrorMind extracts the meaningful content, structures it, stores it as searchable "memories," and answers natural-language questions later, citing the original captures as evidence.
+Personal AI is a personal memory assistant for the physical world. A user captures things they encounter during the day — a printed notice, a handwritten timetable, a textbook page, a whiteboard, a circuit diagram — as photos (or, later, audio). Personal AI extracts the meaningful content, structures it, stores it as searchable "memories," and answers natural-language questions later, citing the original captures as evidence.
 
 The emotional promise: *it feels like you gave an AI a memory of your day, not like you uploaded a file.*
 

@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "MirrorMind — Your AI Memory",
-    short_name: "MirrorMind",
+    name: "Personal AI — Your AI Memory",
+    short_name: "Personal AI",
     description:
       "See it once, remember forever. An AI memory for the physical world.",
     start_url: "/capture",

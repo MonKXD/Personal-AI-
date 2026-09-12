@@ -12,7 +12,7 @@ module.exports = {
   noun: "Memory",
   display: {
     label: "New Memory",
-    description: "Triggers when a new memory is created in MirrorMind.",
+    description: "Triggers when a new memory is created in Personal AI.",
   },
   operation: {
     type: "polling",

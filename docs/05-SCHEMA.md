@@ -1,6 +1,6 @@
 # 05 — Schema (Data Model)
 
-**Product:** MirrorMind
+**Product:** Personal AI
 **DB:** PostgreSQL 15 + `pgvector`
 **Related:** [Architecture](03-ARCHITECTURE.md) · [API Spec](09-API-SPEC.md)
 

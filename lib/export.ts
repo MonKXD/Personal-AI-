@@ -35,7 +35,7 @@ export function buildMarkdownZip(
 ): Uint8Array {
   const files: Record<string, Uint8Array> = {
     "README.md": strToU8(
-      `# MirrorMind export\n\nExported ${new Date().toISOString()}\n\n${memories.length} memories, one Markdown file each in \`memories/\`.\n`,
+      `# Personal AI export\n\nExported ${new Date().toISOString()}\n\n${memories.length} memories, one Markdown file each in \`memories/\`.\n`,
     ),
   };
 
@@ -86,7 +86,7 @@ export function buildAnkiTsv(memories: Mem[]): string {
     /[\t\n"]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
 
   for (const m of memories) {
-    const tag = `mirrormind::${m.type}`;
+    const tag = `personal-ai::${m.type}`;
     const st = (m.structured ?? {}) as Record<string, unknown>;
     const defs = Array.isArray(st.definitions) ? (st.definitions as Record<string, unknown>[]) : [];
     for (const d of defs) {

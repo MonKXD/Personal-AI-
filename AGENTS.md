@@ -1,4 +1,4 @@
-# MirrorMind — agent guide
+# Personal AI — agent guide
 
 **Read `docs/06-RULES.md` first.** It is the engineering + AI-assistant rulebook and takes precedence. Then skim `docs/08-MEMORY.md` (decisions), `docs/15-BUILD-LOG.md` (what's built), and `docs/09-API-SPEC.md` / `docs/05-SCHEMA.md` for contracts.
 

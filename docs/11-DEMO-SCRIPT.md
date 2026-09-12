@@ -1,6 +1,6 @@
 # 11 — Demo Script
 
-**Product:** MirrorMind
+**Product:** Personal AI
 **Duration:** 3–4 minutes
 **Goal:** the audience should feel *"it gave the AI a memory of the physical world."*
 **Related:** [PRD](01-PRD.md) §8 · [TRD](02-TRD.md) §11 · [Tracker](07-TRACKER.md) M4
@@ -9,7 +9,7 @@
 
 ## 1. The one line
 
-> "MirrorMind remembers what you see. Point a camera at anything — a notice, your timetable, a textbook page — and later just *ask*."
+> "Personal AI remembers what you see. Point a camera at anything — a notice, your timetable, a textbook page — and later just *ask*."
 
 ---
 
@@ -35,7 +35,7 @@
 
 ### Beat 0 — Hook (20s)
 - On screen: the Capture home, webcam live.
-- Say: *"We all photograph things we mean to remember — and never find again. MirrorMind is a memory for the physical world."*
+- Say: *"We all photograph things we mean to remember — and never find again. Personal AI is a memory for the physical world."*
 
 ### Beat 1 — Live capture (40s)
 - Hold up the printed Robotics notice, tap the shutter.
@@ -62,7 +62,7 @@
 
 ### Beat 4 — Close (30s)
 - Optional: *"What did I capture today?"* → the digest recap (if stretch built).
-- Say: *"Today it's photos. Next it hears your lectures and conversations too. Same idea: you live your day, MirrorMind remembers it, you just ask."*
+- Say: *"Today it's photos. Next it hears your lectures and conversations too. Same idea: you live your day, Personal AI remembers it, you just ask."*
 - End on the Timeline view (visual, full of thumbnails).
 
 ---

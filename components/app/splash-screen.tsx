@@ -19,7 +19,7 @@ export function SplashScreen() {
 
         <div className="animate-fade-in-up text-center [animation-delay:0.4s] [animation-fill-mode:both]">
           <div className="text-gradient font-display text-[40px] font-bold leading-[1.04] tracking-[-0.045em]">
-            MirrorMind
+            Personal AI
           </div>
           <div className="mt-2.5 font-body text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
             Your AI Memory

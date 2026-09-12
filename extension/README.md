@@ -1,7 +1,7 @@
-# Save to MirrorMind — browser extension
+# Save to Personal AI — browser extension
 
 A toolbar button + right-click menu to send the current page, a link, or
-selected text to your MirrorMind memory. Talks to the public API
+selected text to your Personal AI memory. Talks to the public API
 (`POST /api/v1/captures`) with a personal token — see `docs/16-API.md`.
 
 Manifest V3; works in Chrome, Edge, and Firefox.
@@ -13,7 +13,7 @@ Manifest V3; works in Chrome, Edge, and Firefox.
 1. `chrome://extensions` → turn on **Developer mode**.
 2. **Load unpacked** → pick this `extension/` folder.
 3. Click the extension → **Settings** → paste an API token from
-   MirrorMind (**Settings → API → New key**) → **Test connection**.
+   Personal AI (**Settings → API → New key**) → **Test connection**.
 
 **Firefox**
 
@@ -25,10 +25,10 @@ Manifest V3; works in Chrome, Edge, and Firefox.
 
 - **Toolbar button** → popup: "Save this page", or type a note to save
   instead.
-- **Right-click** a link → *Save link to MirrorMind*.
-- **Right-click** selected text → *Save selection to MirrorMind* (saved as
+- **Right-click** a link → *Save link to Personal AI*.
+- **Right-click** selected text → *Save selection to Personal AI* (saved as
   a note).
-- **Right-click** the page → *Save this page to MirrorMind*.
+- **Right-click** the page → *Save this page to Personal AI*.
 
 A desktop notification confirms each save; the capture is processed
 server-side and shows up on your Timeline shortly.

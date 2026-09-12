@@ -1,5 +1,5 @@
 -- ================================================================= --
--- MirrorMind 0011 — personal API tokens                              --
+-- Personal AI 0011 — personal API tokens                              --
 -- Apply in the Supabase SQL editor after 0000..0010.                 --
 -- ================================================================= --
 --

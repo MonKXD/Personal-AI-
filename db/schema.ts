@@ -1,5 +1,5 @@
 /**
- * Drizzle schema for MirrorMind — mirrors docs/05-SCHEMA.md, adapted for
+ * Drizzle schema for Personal AI — mirrors docs/05-SCHEMA.md, adapted for
  * Supabase (user ids are uuid referencing auth.users; RLS enforced in SQL).
  *
  * The authoritative DDL, including RLS policies and the pgvector index, is the

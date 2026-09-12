@@ -43,7 +43,7 @@ export async function POST(req: Request) {
     if (text.startsWith("/start")) {
       const code = text.split(/\s+/)[1];
       if (!code) {
-        await tgSend(chatId, "Open MirrorMind → Settings → Telegram and tap Connect to link this chat.");
+        await tgSend(chatId, "Open Personal AI → Settings → Telegram and tap Connect to link this chat.");
         return NextResponse.json({ ok: true });
       }
       const linked = await redeemTelegramCode(code, chatId);
@@ -51,14 +51,14 @@ export async function POST(req: Request) {
         chatId,
         linked
           ? "Linked ✅ Send me a photo, a link, or a note and I'll save it to your memory."
-          : "That link code is invalid or expired. Get a fresh one from MirrorMind → Settings → Telegram.",
+          : "That link code is invalid or expired. Get a fresh one from Personal AI → Settings → Telegram.",
       );
       return NextResponse.json({ ok: true });
     }
 
     const userId = await userIdForTelegramChat(chatId);
     if (!userId) {
-      await tgSend(chatId, "This chat isn't linked yet. MirrorMind → Settings → Telegram → Connect.");
+      await tgSend(chatId, "This chat isn't linked yet. Personal AI → Settings → Telegram → Connect.");
       return NextResponse.json({ ok: true });
     }
     const asUser = { id: userId } as unknown as User;

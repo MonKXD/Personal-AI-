@@ -38,7 +38,7 @@ function shell(title: string, bodyHtml: string): string {
       <tr>
         <td style="padding-bottom:24px;text-align:center;">
           <div style="display:inline-block;width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 33% 28%,#ede9fe,#a78bfa 22%,#7c3aed 46%,#4c1d95 68%,#1e1b4b 85%,#04040f);"></div>
-          <div style="margin-top:8px;font-size:15px;font-weight:700;color:#ffffff;">MirrorMind</div>
+          <div style="margin-top:8px;font-size:15px;font-weight:700;color:#ffffff;">Personal AI</div>
         </td>
       </tr>
       <tr>
@@ -49,7 +49,7 @@ function shell(title: string, bodyHtml: string): string {
       </tr>
       <tr>
         <td style="padding-top:20px;text-align:center;font-size:12px;color:rgba(255,255,255,.35);">
-          MirrorMind — your AI memory. <a href="${siteUrl()}/settings" style="color:rgba(167,139,250,.9);">Manage email preferences</a>
+          Personal AI — your AI memory. <a href="${siteUrl()}/settings" style="color:rgba(167,139,250,.9);">Manage email preferences</a>
         </td>
       </tr>
     </table>
@@ -74,12 +74,12 @@ export async function sendWeeklyDigestEmail(
     .join("");
 
   const html = shell(
-    "Your week in MirrorMind",
+    "Your week in Personal AI",
     `<p style="margin:0 0 4px;font-size:14px;color:rgba(255,255,255,.7);">${escapeHtml(data.sentence)}</p>${groupsHtml}
-     <a href="${siteUrl()}/today" style="display:block;margin-top:24px;padding:12px;border-radius:12px;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;text-align:center;text-decoration:none;font-size:14px;font-weight:600;">Open MirrorMind</a>`,
+     <a href="${siteUrl()}/today" style="display:block;margin-top:24px;padding:12px;border-radius:12px;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;text-align:center;text-decoration:none;font-size:14px;font-weight:600;">Open Personal AI</a>`,
   );
 
-  return send(to, "Your week in MirrorMind", html);
+  return send(to, "Your week in Personal AI", html);
 }
 
 export async function sendReminderEmail(
@@ -90,7 +90,7 @@ export async function sendReminderEmail(
     "A deadline is coming up",
     `<p style="margin:0 0 4px;font-size:15px;color:#ffffff;">${escapeHtml(data.title)}</p>
      <p style="margin:0;font-size:13px;color:rgba(255,255,255,.5);">Due ${escapeHtml(data.dueAt)} · from <a href="${siteUrl()}/memory/${data.memoryId}" style="color:rgba(167,139,250,.9);">${escapeHtml(data.memoryTitle || "a memory")}</a></p>
-     <a href="${siteUrl()}/today" style="display:block;margin-top:20px;padding:12px;border-radius:12px;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;text-align:center;text-decoration:none;font-size:14px;font-weight:600;">View in MirrorMind</a>`,
+     <a href="${siteUrl()}/today" style="display:block;margin-top:20px;padding:12px;border-radius:12px;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;text-align:center;text-decoration:none;font-size:14px;font-weight:600;">View in Personal AI</a>`,
   );
 
   return send(to, `Reminder: ${data.title}`, html);

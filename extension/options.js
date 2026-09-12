@@ -14,14 +14,14 @@ function setStatus(text, cls) {
 })();
 
 document.getElementById("save").addEventListener("click", async () => {
-  const base = baseEl.value.trim().replace(/\/+$/, "") || "https://mirror-mindai.vercel.app";
+  const base = baseEl.value.trim().replace(/\/+$/, "") || "https://personal-ai.vercel.app";
   const token = tokenEl.value.trim();
   await MM.setConfig({ base, token });
   setStatus("Saved.", "ok");
 });
 
 document.getElementById("test").addEventListener("click", async () => {
-  const base = baseEl.value.trim().replace(/\/+$/, "") || "https://mirror-mindai.vercel.app";
+  const base = baseEl.value.trim().replace(/\/+$/, "") || "https://personal-ai.vercel.app";
   const token = tokenEl.value.trim();
   await MM.setConfig({ base, token });
   setStatus("Checking…", "");

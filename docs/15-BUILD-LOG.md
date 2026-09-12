@@ -221,7 +221,7 @@ Full detail per module in `docs/modules/*.md`. Migration:
 
 ## 2026-09-09 — New logo + walkthrough restore (reskin follow-ups)
 
-- **New brand mark** (`3ae220d`) — from `MirrorMind Logo Final.dc.html`: a
+- **New brand mark** (`3ae220d`) — from `PersonalAI Logo Final.dc.html`: a
   radial violet sphere (`#8b7ee0 → #4a3f8f → #221c48`) split into two "mind"
   hemispheres (cream `#f6f1e7` left, teal `#3f8f82` right) with a faint
   divider, a specular highlight, and a small teal orbit ring. Replaces the
@@ -246,7 +246,7 @@ Full detail per module in `docs/modules/*.md`. Migration:
 
 ## 2026-09-09 — Full UI reskin (Claude Design handoff)
 
-Recreated `MirrorMind.dc.html` across marketing + app. Built on
+Recreated `PersonalAI.dc.html` across marketing + app. Built on
 `redesign/bricolage-sora` in 12 verified slices, merged to `main` (`1065a69`)
 as one deploy — live on prod, verified.
 
@@ -308,7 +308,7 @@ Owner set the env vars in Vercel and redeployed Production; verified live.
   real Gemini 429 (would need to force a rate-limit).
 - **Supabase auth hardening** — "Allow anonymous sign-ins" turned **off**
   (verified: `signInAnonymously()` now returns `anonymous_provider_disabled`);
-  Site URL set to `https://mirror-mindai.vercel.app` + redirect URLs.
+  Site URL set to `https://personal-ai.vercel.app` + redirect URLs.
   Sign-in re-verified end to end against live prod: `admin.generateLink`
   → `verifyOtp(token_hash)` → `@supabase/ssr` cookies → `/settings` `307`
   without a cookie, `200` with one, `/api/notifications` `200` — the Site
@@ -397,7 +397,7 @@ Owner set the env vars in Vercel and redeployed Production; verified live.
 - **Markdown + Anki export** (`4888369`) — `GET /api/export?format=md|anki`.
   `lib/export.ts`: `buildMarkdownZip` (fflate; one `.md`/memory with YAML
   frontmatter, Obsidian-ready), `buildAnkiTsv` (`#separator:tab`,
-  definition cards + summary cards, `mirrormind::<type>` tags). Settings →
+  definition cards + summary cards, `personal-ai::<type>` tags). Settings →
   Your data has JSON / Markdown / Anki buttons.
 - **Light theme wired** (`45dd43e`) — ~450 hardcoded `white/black`-opacity
   utilities across 47 files migrated to tokens; `.light` palette completed
@@ -428,7 +428,7 @@ Owner set the env vars in Vercel and redeployed Production; verified live.
   immediate deletion, the ownership audit; Terms state "free beta, no
   warranty/SLA, access may be revoked". Contact = in-app feedback.
 
-## 2026-09-07 — Browser extension ("Save to MirrorMind")
+## 2026-09-07 — Browser extension ("Save to Personal AI")
 
 - `extension/` — MV3, plain JS, Chrome + Firefox. Toolbar popup ("Save
   this page" / type a note), context menus (link / selection / page).
@@ -452,7 +452,7 @@ Owner set the env vars in Vercel and redeployed Production; verified live.
   failure, auto-`active=false` at 15).
 - `lib/webhooks.ts` — `dispatchWebhooks(userId, event, data)`:
   fire-and-forget (never throws), `Promise.allSettled` over matching hooks,
-  2 attempts, 8s timeout, `X-MirrorMind-Signature: sha256=HMAC(secret,body)`.
+  2 attempts, 8s timeout, `X-Personal AI-Signature: sha256=HMAC(secret,body)`.
   `newWebhookSecret()` → `whsec_…`.
 - Emitters: pipeline `run.ts` step 8 → `capture.completed` + `memory.created`;
   `cron/reminders` → `action_item.due_soon` per due item; `cron/digest` →
@@ -493,7 +493,7 @@ reference: **docs/16-API.md**.
 
 ## 2026-09-07 — URL / web-page capture
 
-Paste a link → MirrorMind fetches it, pulls the readable text, and remembers
+Paste a link → Personal AI fetches it, pulls the readable text, and remembers
 it like any other capture.
 
 - `lib/pipeline/web-fetch.ts` — `fetchReadable(url)`: **SSRF-guarded** (every
@@ -521,7 +521,7 @@ it like any other capture.
 - `POST` / `DELETE /api/memories/<id>/share` (both `write:true`) → the URL.
 - `GET /m/<share_id>` — top-level public route (root layout only): type
   badge, title, captured date, summary, evidence image, full text, a
-  "Remembered with MirrorMind →" footer. `generateMetadata` sets OG/Twitter
+  "Remembered with Personal AI →" footer. `generateMetadata` sets OG/Twitter
   from the memory; `robots: noindex`.
 - `MemoryActions` → "Share public link" / "Revoke public link" (copies the
   URL on enable). `shared` derived from `memory.shareId`.
@@ -544,7 +544,7 @@ it like any other capture.
 
 ## 2026-09-07 — Retrieval eval harness
 
-`npm run eval` — measures whether MirrorMind actually retrieves the right
+`npm run eval` — measures whether Personal AI actually retrieves the right
 memory for a question, the thing chat quality rests on.
 
 - `scripts/eval-retrieval.ts` + `scripts/eval/cases.json` (23 cases against
@@ -667,7 +667,7 @@ ownership audit 29/29. Dev note: a long-running dev server may hold a stale
 
 ## 2026-09-07 — Free-tier safeguards (10-user cap, shared AI budget)
 
-Groundwork for opening MirrorMind to a small public group on free tiers
+Groundwork for opening Personal AI to a small public group on free tiers
 only. No new spend; degrade gracefully instead of erroring at a quota wall.
 
 - **`MAX_USERS` seat cap** (default 10, `0` = off). A brand-new email is
@@ -696,7 +696,7 @@ only. No new spend; degrade gracefully instead of erroring at a quota wall.
   for two +3 calls, `profiles` count = 1/10. Ownership audit still 29/29;
   typecheck + lint + build clean.
 - **Still owner-side (Supabase dashboard):** disable Anonymous sign-ins;
-  set Site URL to `https://mirror-mindai.vercel.app`. Set `MAX_USERS`,
+  set Site URL to `https://personal-ai.vercel.app`. Set `MAX_USERS`,
   `DAILY_AI_CALL_BUDGET`, `DAILY_CAPTURE_LIMIT=15` in Vercel env.
 
 ## 2026-09-07 — Chat/search depth, PDF thumbnails, notifications, conflicts
@@ -1095,7 +1095,7 @@ cap, sharp processing, upload, pipeline kick-off) was factored out of
 routes share one implementation. `public/sw.js` is a minimal hand-written
 service worker (cache-first for static assets, network-first with a cached
 `/offline` fallback for navigations) — no `next-pwa` dependency. Settings
-gains an "Install MirrorMind" button wired to `beforeinstallprompt`.
+gains an "Install Personal AI" button wired to `beforeinstallprompt`.
 
 **Phase 3 — weekly digest + due-soon reminder emails.** Wires up
 `resend` on top of scaffolding that already existed but was never
@@ -1184,7 +1184,7 @@ account's 3 memories — both now return a cited answer. Gates
 
 Re-skinned the whole app from the original warm-paper light/dark theme to a
 single dark violet "cosmic" theme, based on a Claude Design mockup
-(`design/MirrorMind.dc.html`, vendored read-only under `design/` — see
+(`design/PersonalAI.dc.html`, vendored read-only under `design/` — see
 `design/HANDOFF-README.md`). The Claude Design MCP itself couldn't be reached
 from this session (`/design-login` needs an interactive OAuth flow this
 session can't run), so the mockup was worked from a zip the user exported
@@ -1300,7 +1300,7 @@ Timeline / Chat / Today — the mockup's Home/Capture/Ask 3-tab structure was
 
 ## 2026-09-04 — Deploy + hardening
 
-- **Deployed to Vercel** at `mirror-mindai.vercel.app` (auto-deploys on push to
+- **Deployed to Vercel** at `personal-ai.vercel.app` (auto-deploys on push to
   `main`). Env vars set in the Vercel dashboard; Supabase redirect URLs updated.
 - **env schema hardened twice**: (1) `AI_PROVIDER` / `EMBEDDING_PROVIDER` /
   `DRY_RUN` tolerate whitespace/case/quotes and fall back on bad values; (2)
@@ -1397,7 +1397,7 @@ are reasoning models that returned empty output under the token budget → free-
 ## 2026-09-04 — Foundation build
 
 ### Done
-- **Repo**: renamed `Mirror MInd ` → `mirrormind`; `git init`; Next scaffold; deps installed (Supabase, Drizzle, Radix, sonner, motion, lucide, zod).
+- **Repo**: renamed `Mirror MInd ` → `personal-ai`; `git init`; Next scaffold; deps installed (Supabase, Drizzle, Radix, sonner, motion, lucide, zod).
 - **Design system**: full token set (warm-paper light + dark) in `app/globals.css` mapped to the shadcn variable names; Inter + JetBrains Mono; `container-px`, `bg-grain`, `animate-rise`/`fade-in` utilities. Primitives: button, card, badge, input, label, skeleton, separator, avatar, dropdown-menu, sheet, tooltip, sonner.
 - **Brand**: `components/brand/logo.tsx` (gradient mark + wordmark), `public/favicon.svg`.
 - **Marketing site** (`app/(marketing)/`): responsive header (scroll-aware, mobile sheet) + footer; landing page (hero with static "ask" preview, capture-types strip, 3-step how-it-works, evidence callout, 6 feature cards, 3 use-case columns, CTA) with scroll `Reveal` animation; `/pricing` (Free/Pro/Teams); `/privacy` + `/terms` (plain-language launch summaries).
