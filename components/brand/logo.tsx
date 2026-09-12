@@ -82,7 +82,7 @@ export function Logo({
   href = "/",
   showWord = true,
   withTagline = false,
-  tagline = "Your AI Memory",
+  tagline = "Your Daily Assistant",
   size = 34,
 }: {
   className?: string;

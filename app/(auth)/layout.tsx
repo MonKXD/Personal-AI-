@@ -12,7 +12,11 @@ const QUOTES = [
   },
   {
     q: "Anything due this week?",
-    a: "Two deadlines, pulled from a circular and a whiteboard.",
+    a: "Deadlines pulled from a circular, a WhatsApp chat, and a manual entry — together.",
+  },
+  {
+    q: "How much did I spend on food last month?",
+    a: "Categorized automatically from an uploaded bank statement.",
   },
 ];
 
@@ -40,15 +44,16 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       <aside className="relative hidden overflow-hidden border-l border-border bg-secondary lg:block">
         <div className="bg-cosmic absolute inset-0 opacity-80" />
         <div className="relative flex h-full flex-col justify-center gap-6 p-14">
-          <div className="text-sm font-semibold text-primary">Ask your memory</div>
+          <div className="text-sm font-semibold text-primary">Ask your assistant</div>
           <blockquote className="font-display text-2xl font-semibold leading-snug tracking-tight text-foreground">
             &ldquo;{pick.q}&rdquo;
           </blockquote>
           <p className="max-w-sm text-sm text-muted-foreground">{pick.a}</p>
           <div className="mt-6 h-px w-24 bg-border" />
           <p className="max-w-sm text-sm text-muted-foreground">
-            Personal AI reads what you capture, remembers it, and shows the original
-            image as evidence for every answer.
+            One assistant for everything you&rsquo;d otherwise juggle — captures,
+            deadlines, money, messages, and calls — and it shows its work for every
+            answer.
           </p>
         </div>
       </aside>

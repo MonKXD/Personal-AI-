@@ -8,7 +8,7 @@
 
 ## 1. One-paragraph project state
 
-Personal AI is at **concept / pre-build**. The full document set (PRD, TRD, Architecture, Design, Schema, Rules, Tracker, this Memory, API Spec, Prompts, Demo Script, Security, Test Plan, Setup) exists as v0.1. No code yet. Immediate next step per [Tracker](07-TRACKER.md): milestone **M0** (repo + infra). Target for first usable build: a 12-hour hackathon day.
+Personal AI is **built and live in beta**: capture → AI extraction → structured memory → embeddings → cited recall works end to end (Next.js + Supabase Postgres/Drizzle/Auth/Storage/RLS), plus folders, chat history, Today digest, notifications, Telegram capture, and a public v1 API. Four additional modules were adapted from an earlier Firebase-oriented spec onto this stack: the deadline engine and finance tracking are fully live; the calling assistant and WhatsApp triage are wired on this app's side but each need a separately-hosted always-on process (a Twilio ConversationRelay handler, a passive Baileys listener — see `docs/modules/`) that isn't part of this repo by design. See [15-BUILD-LOG.md](15-BUILD-LOG.md) for the full, current history and [07-TRACKER.md](07-TRACKER.md) for status.
 
 ---
 

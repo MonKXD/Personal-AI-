@@ -44,7 +44,7 @@ export function AppShell({
       {/* Desktop sidebar */}
       <aside className="sticky top-0 hidden h-dvh flex-col border-r border-border bg-card lg:flex">
         <div className="flex items-center justify-between px-5 pb-4 pt-6">
-          <Logo href="/capture" withTagline tagline="Your memory, cited" />
+          <Logo href="/capture" withTagline tagline="One assistant, fully cited" />
           <NotificationBell className="-mr-1.5" />
         </div>
         <div className="px-4 pb-2">
@@ -98,7 +98,7 @@ export function AppShell({
             </SheetTrigger>
             <SheetContent side="left" className="w-72">
               <SheetTitle>
-                <Logo href={null} withTagline tagline="Your memory, cited" />
+                <Logo href={null} withTagline tagline="One assistant, fully cited" />
               </SheetTitle>
               <div className="mt-5">
                 <Button

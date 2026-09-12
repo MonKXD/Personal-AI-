@@ -34,18 +34,18 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Personal AI — Your AI Memory",
+    default: "Personal AI — Your Daily Assistant",
     template: "%s · Personal AI",
   },
   description:
-    "Point your camera at a notice, timetable, textbook page, or whiteboard. Personal AI reads it, remembers it, and answers your questions later — with the original as evidence.",
+    "Capture and remember anything you see, track deadlines from every source, watch your spending, and — once connected — triage WhatsApp and place calls. One assistant for your day, with receipts for every answer.",
   applicationName: "Personal AI",
   appleWebApp: { capable: true, title: "Personal AI", statusBarStyle: "black-translucent" },
   keywords: [
+    "AI assistant",
     "AI memory",
-    "visual memory",
-    "OCR",
-    "personal knowledge",
+    "deadline tracker",
+    "personal finance",
     "second brain",
     "note capture",
   ],
@@ -53,16 +53,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "Personal AI — Your AI Memory",
+    title: "Personal AI — Your Daily Assistant",
     description:
-      "See it once, remember forever. Personal AI gives an AI a memory of your day.",
+      "One assistant for everything you'd otherwise juggle — memory, deadlines, money, messages, and calls. Every answer shows its work.",
     siteName: "Personal AI",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Personal AI — Your AI Memory",
+    title: "Personal AI — Your Daily Assistant",
     description:
-      "See it once, remember forever. Personal AI gives an AI a memory of your day.",
+      "One assistant for everything you'd otherwise juggle — memory, deadlines, money, messages, and calls. Every answer shows its work.",
   },
   icons: {
     icon: [

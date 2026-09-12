@@ -1,10 +1,12 @@
 # Personal AI — Document Set Overview
 
-> **Personal AI: Your AI Memory** — A personal AI that remembers what you see, hear, and learn during the day. Point a camera at a notice, textbook, circuit, timetable, or whiteboard; Personal AI extracts the information, stores it in searchable memory, and later answers questions like *"What was written on the robotics club notice I saw this morning?"*
+> **Personal AI: Your Daily Assistant** — one assistant for everything you'd otherwise juggle across five apps. Point a camera at a notice, textbook, circuit, timetable, or whiteboard and it remembers it, answering questions later like *"What was written on the robotics club notice I saw this morning?"* It also keeps one deadline list across every source, tracks your spending from manual entries or an uploaded bank statement, and — once you connect your own Twilio account and WhatsApp listener — triages your WhatsApp and places calls on your behalf.
+>
+> This doc set (00–16) describes the original memory-capture concept this project started as; the four newer modules (deadline engine, finance tracking, calling assistant, WhatsApp triage) are documented separately in [`docs/modules/`](modules/), with what's actually built vs. still spec tracked in [`15-BUILD-LOG.md`](15-BUILD-LOG.md).
 
-- **Status:** Concept / hackathon build (1-day MVP + roadmap)
+- **Status:** Memory/capture core is built and live; deadline engine and finance tracking are fully built; calling assistant and WhatsApp triage are wired but need external setup (see `docs/modules/`).
 - **Owner:** harshgosalia007@gmail.com
-- **Last updated:** 2026-09-03
+- **Last updated:** 2026-09-12
 
 ---
 

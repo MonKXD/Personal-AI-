@@ -20,6 +20,14 @@ export default function PrivacyPage() {
           deadlines, key terms, and so on).</li>
         <li>Your questions and Personal AI&rsquo;s answers, so your history is there
           when you come back.</li>
+        <li>Deadlines, from manual entries and (if connected) WhatsApp and calls.</li>
+        <li>Finance transactions you log manually or upload via a bank/UPI
+          statement, plus the category each was assigned.</li>
+        <li>If you connect WhatsApp triage or the calling assistant yourself
+          (both require your own separately-hosted setup — see
+          <code> docs/modules/</code>): the categorized WhatsApp messages and
+          call transcripts/summaries those produce. Neither is connected by
+          default.</li>
         <li>Your account email — used for sign-in, and for reminder / weekly-recap
           emails if you leave those switched on (Settings lets you turn them off).</li>
       </ul>

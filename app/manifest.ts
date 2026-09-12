@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Personal AI — Your AI Memory",
+    name: "Personal AI — Your Daily Assistant",
     short_name: "Personal AI",
     description:
-      "See it once, remember forever. An AI memory for the physical world.",
+      "One assistant for your day: capture and remember anything, track deadlines from every source, watch your spending, and — once connected — triage WhatsApp and place calls on your behalf.",
     start_url: "/capture",
     scope: "/",
     display: "standalone",

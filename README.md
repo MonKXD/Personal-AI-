@@ -1,8 +1,8 @@
 # Personal AI
 
-**Your AI memory for the physical world.** Point your camera at a notice, timetable, textbook page, or whiteboard. Personal AI reads it, structures it, remembers it — and answers your questions later, showing the original image as evidence.
+**One assistant for everything you'd otherwise juggle across five apps.** Capture and remember anything you see (a notice, timetable, textbook page, whiteboard, PDF, or voice note) with cited recall; track deadlines from every source in one list; log expenses or upload a bank statement for automatic categorization; and, once connected, let it triage your WhatsApp and place calls on your behalf.
 
-> Status: capture → AI extraction → structured memory → embeddings → cited recall works end to end. Runs on deterministic offline fixtures until an AI key is added.
+> Status: capture → AI extraction → structured memory → embeddings → cited recall works end to end, on deterministic offline fixtures until an AI key is added. Deadline tracking and finance tracking are fully live the same way. The calling assistant and WhatsApp triage are wired on this app's side but each need a separately-hosted always-on process (a Twilio ConversationRelay handler, a passive Baileys listener) that this repo intentionally doesn't include — see `docs/modules/`.
 
 ## Stack
 
@@ -71,7 +71,8 @@ Verify the real path: `npm run test:pipeline -- --real ./some-notice.jpg`.
 app/
   (marketing)/       landing, pricing, privacy, terms  — public
   (auth)/            sign-in  — magic link + Google
-  (app)/             capture · timeline · chat · today · memory/[id] · settings  — requires auth
+  (app)/             capture · timeline · chat · today · memory/[id] · settings ·
+                     deadlines · finance · calls · whatsapp  — requires auth
   auth/              OAuth callback + sign-out route handlers
   api/health/        health check
 components/
@@ -88,14 +89,17 @@ lib/
 db/
   schema.ts          Drizzle schema
   migrations/         hand-written SQL (authoritative)
-docs/                 full product + engineering spec (00–15)
+docs/                 full product + engineering spec (00–16) + modules/
 ```
 
 ## Documentation
 
 Everything lives in [`docs/`](docs/): PRD, TRD, architecture, design system, schema,
 rules, tracker, project memory, API spec, prompt library, demo script, security &
-privacy, test plan, setup, and the build log.
+privacy, test plan, setup, and the build log — plus [`docs/modules/`](docs/modules/)
+for the deadline engine, finance tracking, calling assistant, and WhatsApp triage,
+and [`docs/personal-agent-spec/`](docs/personal-agent-spec/) for the original
+uploaded spec those were adapted from.
 
 ## Deploy (Vercel)
 

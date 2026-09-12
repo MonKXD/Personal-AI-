@@ -8,8 +8,8 @@ export function SiteFooter() {
         <div>
           <Logo />
           <p className="mt-3 max-w-xs text-sm text-muted-foreground">
-            Your AI memory for the physical world. Capture what you see, ask about
-            it later.
+            One assistant for your day — memory, deadlines, money, messages, and
+            calls, all in one place.
           </p>
         </div>
 
@@ -43,7 +43,7 @@ export function SiteFooter() {
           href="/sign-in"
           className="font-semibold text-primary transition-colors hover:text-violet-bright"
         >
-          Open your memory →
+          Open Personal AI →
         </Link>
       </div>
     </footer>

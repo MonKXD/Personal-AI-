@@ -13,6 +13,7 @@ import {
   FolderTree,
   ShieldCheck,
   BellRing,
+  Wallet,
   Plus,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -29,23 +30,24 @@ export default function LandingPage() {
         <div className="container-px mx-auto grid max-w-6xl items-center gap-10 py-16 lg:grid-cols-[minmax(0,1fr)_minmax(280px,420px)] lg:py-24">
           <div className="animate-fade-in-up">
             <span className="mb-6 inline-flex items-center gap-2 rounded-full bg-[var(--tint-violet)] px-3.5 py-1.5 text-xs font-semibold tracking-wide text-primary">
-              <Sparkles className="size-3" /> A memory for the physical world
+              <Sparkles className="size-3" /> One assistant, everything you juggle
             </span>
             <h1 className="max-w-[620px] text-balance text-[2.5rem] font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.25rem]">
-              You saw it once.
+              You&rsquo;d need five apps.
               <br />
-              <span className="text-gradient">Remember it forever.</span>
+              <span className="text-gradient">You just need one.</span>
             </h1>
             <p className="mt-5 max-w-[520px] text-pretty text-[1.05rem] leading-relaxed text-muted-foreground">
               Point your camera at a notice, timetable, or textbook page — or drop in a
-              PDF, slide deck, or voice note. Personal AI reads it, files it, and answers
-              your questions later, with the original as proof.
+              PDF, slide deck, or voice note — and Personal AI remembers it. It also
+              tracks every deadline in one list, keeps tabs on your spending, and, once
+              connected, triages your WhatsApp and places calls on your behalf.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Magnetic>
                 <Button asChild size="lg" className="group">
                   <Link href="/sign-in">
-                    Start remembering
+                    Get started
                     <ArrowRight className="transition-transform duration-300 group-hover:translate-x-0.5" />
                   </Link>
                 </Button>
@@ -86,15 +88,16 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* How it becomes memory */}
+      {/* How it works */}
       <section id="how" className="scroll-mt-16 border-t border-border">
         <div className="container-px mx-auto max-w-5xl py-20 lg:py-24">
           <Reveal>
             <h2 className="text-center text-[1.75rem] font-semibold tracking-tight sm:text-3xl">
-              How it becomes memory
+              How it works
             </h2>
             <p className="mx-auto mt-3 max-w-md text-center text-muted-foreground">
-              Three quiet steps between something you saw and something you can ask about.
+              Three quiet steps between everything going on in your day and one place
+              that keeps track of it.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-7 sm:grid-cols-3">
@@ -102,20 +105,20 @@ export default function LandingPage() {
               {
                 icon: Camera,
                 tint: "var(--tint-violet)",
-                title: "Capture",
-                body: "A photo, a voice note, a PDF, a link — dropped in as easily as it happened.",
+                title: "Capture & connect",
+                body: "A photo, a voice note, a PDF, a bank statement — or connect WhatsApp and calling — dropped in as easily as it happened.",
               },
               {
                 icon: Brain,
                 tint: "var(--tint-teal)",
                 title: "Understand",
-                body: "Classified, read for entities and deadlines, then chunked into a searchable memory.",
+                body: "Classified, read for entities, deadlines, and transactions, then made instantly searchable.",
               },
               {
                 icon: MessagesSquare,
                 tint: "var(--tint-violet)",
-                title: "Ask",
-                body: "Ask in plain language. Every answer links back to the exact memory it came from.",
+                title: "Stay on top",
+                body: "Ask in plain language, or just glance at one list of deadlines, spending, and messages that need you.",
               },
             ].map((s, i) => (
               <Reveal key={s.title} delay={i * 70}>
@@ -161,8 +164,8 @@ export default function LandingPage() {
       <section className="bg-[var(--tint-teal)] px-6 py-16 text-center">
         <Reveal>
           <p className="mx-auto max-w-2xl font-display text-2xl font-semibold leading-snug text-success-foreground/90 dark:text-success">
-            &ldquo;Not another inbox. A memory that answers back — and always shows its
-            work.&rdquo;
+            &ldquo;Not five apps. One assistant that remembers, tracks, and reminds —
+            and always shows its work.&rdquo;
           </p>
         </Reveal>
       </section>
@@ -172,17 +175,17 @@ export default function LandingPage() {
         <div className="container-px mx-auto max-w-6xl py-20 lg:py-24">
           <Reveal>
             <h2 className="text-[1.75rem] font-semibold tracking-tight sm:text-3xl">
-              Built like a memory, not a folder
+              Built like an assistant, not a folder
             </h2>
           </Reveal>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { icon: Clock, title: "Time-aware recall", body: "“The notice I saw this morning” resolves to the right day and hour." },
               { icon: Layers, title: "Structured extraction", body: "Timetables become schedules. Notices become dates and deadlines. Circuits become component lists." },
-              { icon: MessagesSquare, title: "Multi-source answers", body: "One question can combine a timetable, a circular, and a textbook page into a single reply." },
-              { icon: FolderTree, title: "Folders that file themselves", body: "Nestable folders, an AI-suggested home for each capture, and an Unfiled bucket that never loses anything." },
+              { icon: BellRing, title: "One deadline list, every source", body: "Manual entries today; WhatsApp and calls feed in automatically once connected — soonest-first, priority color-coded." },
+              { icon: Wallet, title: "Spending, categorized automatically", body: "Log an expense or upload a bank statement — Personal AI sorts it into categories and tracks it by month." },
               { icon: ShieldCheck, title: "Cited, or it says so", body: "Every answer links the captures it used. No memory of something? It tells you plainly." },
-              { icon: BellRing, title: "Deadlines & weekly recap", body: "Dates it reads become reminders; a recap of everything you captured lands each week." },
+              { icon: FolderTree, title: "Folders that file themselves", body: "Nestable folders, an AI-suggested home for each capture, and an Unfiled bucket that never loses anything." },
             ].map((f, i) => (
               <Reveal key={f.title} delay={i * 55}>
                 <div className="h-full rounded-xl border border-border bg-card p-6 shadow-card">
@@ -225,17 +228,18 @@ export default function LandingPage() {
         <Reveal>
           <div className="bg-cosmic overflow-hidden rounded-2xl border border-border px-8 py-14 text-center shadow-pop sm:px-16">
             <h2 className="mx-auto max-w-2xl text-balance text-[1.75rem] font-semibold tracking-tight sm:text-3xl">
-              Give your memory a search bar
+              One assistant. Everything covered.
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-muted-foreground">
-              Capture your first notice or timetable in under a minute.
+              Capture your first memory, log an expense, or add a deadline — takes
+              under a minute.
             </p>
             <div className="mt-8 flex justify-center">
               <Magnetic>
                 <Button asChild size="lg" className="group">
                   <Link href="/sign-in">
                     <Camera className="size-4" />
-                    Start remembering
+                    Get started
                     <ArrowRight className="transition-transform duration-300 group-hover:translate-x-0.5" />
                   </Link>
                 </Button>
@@ -279,7 +283,11 @@ function HeroOrbit() {
 const FAQ: { q: string; a: string }[] = [
   {
     q: "What can it actually read?",
-    a: "Photos of notices, timetables, textbook pages, whiteboards, circuit diagrams, handwritten notes and slides — plus uploaded PDFs, Word documents, PowerPoint decks, and voice notes. It transcribes everything and pulls out the dates, rooms, deadlines and key terms.",
+    a: "Photos of notices, timetables, textbook pages, whiteboards, circuit diagrams, handwritten notes and slides — plus uploaded PDFs, Word documents, PowerPoint decks, voice notes, and bank/UPI statements. It transcribes everything and pulls out the dates, rooms, deadlines, transactions, and key terms.",
+  },
+  {
+    q: "Does the WhatsApp and calling assistant work out of the box?",
+    a: "The deadline engine and finance tracking are fully live from your first sign-in. WhatsApp triage and the calling assistant need you to connect your own Twilio account and a small always-on listener process first — see docs/modules/ for setup. Until then, those two pages show a clear setup note instead of pretending to work.",
   },
   {
     q: "Does it work on my phone?",
@@ -287,7 +295,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Is my data private?",
-    a: "Every query only ever sees your own memories, and text you photograph is treated as data, never as instructions. One honest caveat: during the beta it runs on Google's free AI tier, where prompts and results may be used to improve Google's models — so don't put genuinely confidential material in yet. The paid tier it moves to next does not train on your data.",
+    a: "Every query only ever sees your own data, and text you photograph (or a message someone sends you) is treated as data, never as instructions. One honest caveat: during the beta it runs on Google's free AI tier, where prompts and results may be used to improve Google's models — so don't put genuinely confidential material in yet. The paid tier it moves to next does not train on your data.",
   },
   {
     q: "What happens when I hit 15 captures in a day?",

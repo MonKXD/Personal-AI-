@@ -16,7 +16,7 @@ type Cell = boolean | string;
 const TIERS = [
   { name: "Free", tagline: "The whole app, today.", price: "₹0", cadence: "while in beta", cta: "Get started", href: "/sign-in", featured: true, soon: false },
   { name: "Pro", tagline: "For everyday use.", price: "Coming soon", cadence: "", cta: "Coming soon", href: "/sign-in", featured: false, soon: true },
-  { name: "Teams", tagline: "Shared memory for a class or team.", price: "Coming soon", cadence: "", cta: "Coming soon", href: "/sign-in", featured: false, soon: true },
+  { name: "Teams", tagline: "Shared assistant for a family or team.", price: "Coming soon", cadence: "", cta: "Coming soon", href: "/sign-in", featured: false, soon: true },
 ] as const;
 
 const ROWS: { label: string; values: [Cell, Cell, Cell] }[] = [
@@ -25,6 +25,8 @@ const ROWS: { label: string; values: [Cell, Cell, Cell] }[] = [
   { label: "Photo, PDF, Word, PowerPoint, voice", values: [true, true, true] },
   { label: "Folders, full-text search, citations", values: [true, true, true] },
   { label: "Conflict-aware answers & reminders", values: [true, true, true] },
+  { label: "Deadline tracking & finance tracking", values: [true, true, true] },
+  { label: "WhatsApp triage & calling assistant (bring your own Twilio/listener)", values: [true, true, true] },
   { label: "Full history & export", values: [true, true, true] },
   { label: "Priority AI — paid model, no training on your data", values: [false, true, true] },
   { label: "Shared team spaces & roles", values: [false, false, true] },
