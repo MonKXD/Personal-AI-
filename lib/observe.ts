@@ -43,7 +43,7 @@ export function reportError(err: unknown, ctx: Ctx = {}): void {
   recent.set(sig, now);
   if (recent.size > 200) recent.clear();
 
-  const site = process.env.NEXT_PUBLIC_SITE_URL ?? "personal-ai";
+  const site = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "personal-ai";
   const lines = [
     `:rotating_light: *${site}* error`,
     ctx.where ? `\`${ctx.where}\`` : null,

@@ -29,7 +29,10 @@ const spaceMono = Space_Mono({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+// A blank (but present) env var is common on Vercel when a project is
+// imported with an .env.example autodetected and left unfilled — `??` alone
+// doesn't catch that, only null/undefined, and `new URL("")` below throws.
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
